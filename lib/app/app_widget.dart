@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:salgadar_app/app/modules/home/home_module.dart';
+import 'package:salgadar_app/app/modules/home/home_page.dart';
 import 'package:salgadar_app/app/modules/settings/settings_module.dart';
 import 'package:salgadar_app/app/modules/splash_screen/splash_screen_module.dart';
 
@@ -20,7 +22,7 @@ class _AppWidgetState extends State<AppWidget> {
         title: "Bodega Biz",
         theme: ThemeCollection.getAppTheme(),
         darkTheme: ThemeCollection.darkTheme(),
-        initialRoute: SplashScreenModule.routeName,
+        initialRoute: HomeModule.routeName,
         navigatorKey: Modular.navigatorKey,
         onGenerateRoute: Modular.generateRoute,
         debugShowCheckedModeBanner: false,

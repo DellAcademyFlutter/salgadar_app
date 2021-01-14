@@ -8,8 +8,8 @@ Aplicativo móvel de loja virtual de salgados e fast foods.
 
 // Comandos de ativacao do server
 // Watch command:
-// json-server --watch livros.json
-// json-server --watch --host 0.0.0.0  livros.json
+// json-server --watch salgadar.json
+// json-server --watch --host 0.0.0.0  salgadar.json
 
 ## Modelo relacional
 

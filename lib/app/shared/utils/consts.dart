@@ -11,7 +11,7 @@ const TABLE_CART_NAME = 'carts';
 const TABLE_ITEM_CART_NAME = 'items_cart';
 const TABLE_PURCHASE_NAME = 'purchases';
 
-// URL das tabelas
+// URL das tabelas (resources)
 const URL_USER = URL_BASE + TABLE_USER_NAME;
 const URL_ITEM = URL_BASE + TABLE_ITEM_NAME;
 const URL_CART = URL_BASE + TABLE_CART_NAME;
@@ -37,6 +37,7 @@ const ITEM_PRICE = 'price';
 
 // Atributos de [TABLE_CART_NAME].
 const CART_ID = 'id';
+const CART_ITEMS = 'items';
 
 // Atributos de [TABLE_ITEM_CART_NAME].
 const ITEM_CART_ITEMID = 'itemId';

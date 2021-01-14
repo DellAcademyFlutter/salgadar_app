@@ -1,0 +1,24 @@
+{
+  "users": [],
+  "items": [],
+  "carts": [
+    {
+      "id": 1,
+      "items": [
+        {
+          "itemId": 2,
+          "cartId": 1,
+          "qtt": 1,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 2,
+          "cartId": 1,
+          "qtt": 1,
+          "itemPrice": 2
+        }
+      ]
+    }
+  ],
+  "purchases": []
+}
