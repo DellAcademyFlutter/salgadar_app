@@ -5,7 +5,7 @@ import 'package:salgadar_app/app/shared/utils/consts.dart';
 
 class CartAPIDao {
   /// Post - adiciona um [Cart] e retorna [id] gerado.
-  Future<int> postCart({Cart cart}) async {
+  Future<int> postCart(Cart cart) async {
     final headers = <String, String>{
       'Content-type': 'application/json',
       'Accept': 'application/json',
@@ -19,7 +19,7 @@ class CartAPIDao {
   }
 
   /// Put - atualiza um [Card].
-  Future<Cart> putCart({Cart cart}) async {
+  Future<Cart> putCart(Cart cart) async {
     final response = await http.put(
       '$URL_CART/${cart.id}',
       headers: <String, String>{

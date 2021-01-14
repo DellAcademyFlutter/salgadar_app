@@ -1,52 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:salgadar_app/app/data/api/cart_api_dao.dart';
-import 'package:salgadar_app/app/models/cart.dart';
-import 'package:salgadar_app/app/models/item_cart.dart';
+import 'package:salgadar_app/app/controllers/item_controller.dart';
+import 'package:salgadar_app/app/models/item.dart';
+
+import 'components/cart_icon_widget.dart';
+import 'components/item_widget.dart';
+import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ModularState<HomePage, HomeController> {
+  final itemController = Modular.get<ItemController>();
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: RaisedButton(
-          child: Text('Click me now!'),
-          onPressed: () async => await postTest(),
-        ),
+    return Scaffold(
+      body: Consumer<ItemController>(
+        builder: (context, value) {
+          return GridView.count(
+            crossAxisCount: 2,
+            padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+            mainAxisSpacing: 0,
+            crossAxisSpacing: 8,
+            children: itemController.items
+                .map<ItemWidget>((Item item) => ItemWidget(item: item))
+                .toList(),
+          );
+        },
+      ),
+      floatingActionButton: CartIconWidget(),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      bottomNavigationBar: ValueListenableBuilder(
+        valueListenable: controller.selectedIndex,
+        builder: (context, value, child) {
+          return BottomNavigationBar(
+            items: [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.fastfood_outlined), label: 'comidas'),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.emoji_food_beverage_outlined),
+                label: 'bebidas',
+              )
+            ],
+            currentIndex: controller.selectedIndex.value,
+            selectedItemColor: Theme.of(context).primaryColor.withBlue(255),
+            onTap: (index) => controller.changeSelectedIndex(index),
+          );
+        },
       ),
     );
   }
-}
-
-/// Post - adiciona um [Cart] e retorna [id] gerado.
-Future<int> postTest() async {
-  final cartAPIDao = Modular.get<CartAPIDao>();
-
-  final itemCart1 = ItemCart(
-    cartId: 1,
-    itemId: 2,
-    itemPrice: 2.0,
-    qtt: 1,
-  );
-
-  final itemCart2 = ItemCart(
-    cartId: 1,
-    itemId: 2,
-    itemPrice: 2.0,
-    qtt: 1,
-  );
-
-  final listItems = [itemCart1, itemCart2];
-
-  final cart = Cart(
-    id: 1,
-    items: listItems,
-  );
-
-  await cartAPIDao.postCart(cart: cart).then((value) => print('$value'));
 }

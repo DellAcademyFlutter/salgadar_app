@@ -3,6 +3,17 @@
 const URL_BASE = 'http://10.0.2.2:3000/';
 //const URL_BASE = 'http://Seu.Ip:3000/';
 
+// Nomes das categorias
+const CATEGORY_FOOD = 'food';
+const CATEGORY_DRINK = 'drink';
+
+// Nomes das subcategorias
+const SUBCATEGORY_SAVORY = 'savory';
+const SUBCATEGORY_PIZZA = 'pizza';
+const SUBCATEGORY_HAMBURGER = 'hambrger';
+const SUBCATEGORY_JUICE = 'juice';
+const SUBCATEGORY_SMOOTHIE = 'smoothie';
+
 // Nomes das tabelas.
 const DATABASE_NAME = "salgadar.db";
 const TABLE_USER_NAME = 'users';

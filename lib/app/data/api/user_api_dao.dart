@@ -5,7 +5,7 @@ import 'package:salgadar_app/app/shared/utils/consts.dart';
 
 class UserAPIDao {
   /// Post - adiciona um [User] e retorna [id] gerado.
-  Future<int> postUser({User user}) async {
+  Future<int> postUser(User user) async {
     final headers = <String, String>{
       'Content-type': 'application/json',
       'Accept': 'application/json',
@@ -19,7 +19,7 @@ class UserAPIDao {
   }
 
   /// Put - atualiza um [Card].
-  Future<User> putUser({User user}) async {
+  Future<User> putUser(User user) async {
     final response = await http.put(
       '$URL_USER/${user.id}',
       headers: <String, String>{

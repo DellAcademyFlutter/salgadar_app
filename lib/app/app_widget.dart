@@ -22,7 +22,7 @@ class _AppWidgetState extends State<AppWidget> {
         title: "Bodega Biz",
         theme: ThemeCollection.getAppTheme(),
         darkTheme: ThemeCollection.darkTheme(),
-        initialRoute: HomeModule.routeName,
+        initialRoute: SplashScreenModule.routeName,
         navigatorKey: Modular.navigatorKey,
         onGenerateRoute: Modular.generateRoute,
         debugShowCheckedModeBanner: false,

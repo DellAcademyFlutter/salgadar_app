@@ -1,13 +1,11 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:salgadar_app/app/data/api/item_api_dao.dart';
-import 'package:salgadar_app/app/data/local/item_SQLite_dao.dart';
+import 'package:salgadar_app/app/controllers/item_controller.dart';
 import 'package:salgadar_app/app/models/item.dart';
 import 'package:salgadar_app/app/shared/utils/url_images.dart';
 
 class PreconfigureSalgadar {
-  initializeItems() async {
-    final itemAPIDao = Modular.get<ItemAPIDao>();
-    final itemSQLiteDaoDao = Modular.get<ItemSQLiteDao>();
+  static initializeSalgadarItems() async {
+    final itemController = Modular.get<ItemController>();
 
     final item1 = Item(
       id: 1,
@@ -199,7 +197,30 @@ class PreconfigureSalgadar {
       price: 4.00,
     );
 
-    
+    final items = [
+      item1,
+      item2,
+      item3,
+      item4,
+      item5,
+      item6,
+      item7,
+      item8,
+      item9,
+      item10,
+      item11,
+      item12,
+      item13,
+      item14,
+      item15,
+      item16,
+      item17,
+      item18,
+      item19
+    ];
 
+    for (var i = 0; i < items.length; i++) {
+      itemController.addItem(items[i]);
+    }
   }
 }

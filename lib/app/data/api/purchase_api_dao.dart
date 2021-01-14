@@ -5,7 +5,7 @@ import 'package:salgadar_app/app/shared/utils/consts.dart';
 
 class PurchaseAPIDao {
   /// Post - adiciona um [Purchase].
-  Future<http.Response> postPurchase({Purchase purchase}) async {
+  Future<http.Response> postPurchase(Purchase purchase) async {
     final headers = <String, String>{
       'Content-type': 'application/json',
       'Accept': 'application/json',
@@ -19,7 +19,7 @@ class PurchaseAPIDao {
   }
 
   /// Put - atualiza um [Card].
-  Future<Purchase> putPurchase({Purchase purchase}) async {
+  Future<Purchase> putPurchase(Purchase purchase) async {
     final response = await http.put(
       '$URL_PURCHASE/${purchase.userId & purchase.cartId}',
       headers: <String, String>{

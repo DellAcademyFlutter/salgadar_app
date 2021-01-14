@@ -1,24 +1,79 @@
 {
   "users": [],
-  "items": [],
-  "carts": [
+  "items": [
     {
       "id": 1,
-      "items": [
-        {
-          "itemId": 2,
-          "cartId": 1,
-          "qtt": 1,
-          "itemPrice": 2
-        },
-        {
-          "itemId": 2,
-          "cartId": 1,
-          "qtt": 1,
-          "itemPrice": 2
-        }
-      ]
+      "name": "Croissant",
+      "description": "Salgado de massa foliada recheado com queijo.",
+      "image": "https://images.unsplash.com/photo-1603640560377-4ca0bd8df491?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80",
+      "category": "food",
+      "subCategory": "savory",
+      "price": 3
+    },
+    {
+      "id": 2,
+      "name": "Frango empanado",
+      "description": "Salgado de frango frito.",
+      "image": "https://images.unsplash.com/photo-1562967914-608f82629710?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80",
+      "category": "food",
+      "subCategory": "savory",
+      "price": 1
+    },
+    {
+      "id": 3,
+      "name": "Onion ring",
+      "description": "Cebola empanada e frita.",
+      "image": "https://images.unsplash.com/photo-1579670039509-e21e75007e4c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
+      "category": "food",
+      "subCategory": "savory",
+      "price": 0.5
+    },
+    {
+      "id": 4,
+      "name": "Torta de mirtilo",
+      "description": "Torta recheada com os deliciosos e suculentos mirtilos!",
+      "image": "https://images.unsplash.com/photo-1476887334197-56adbf254e1a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "category": "food",
+      "subCategory": "savory",
+      "price": 3
+    },
+    {
+      "id": 5,
+      "name": "Bacon",
+      "description": "Pizza recheada com bacon.",
+      "image": "https://images.unsplash.com/photo-1566843972063-21b936128515?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
+      "category": "food",
+      "subCategory": "pizza",
+      "price": 18
+    },
+    {
+      "id": 6,
+      "name": "Queijo",
+      "description": "Pizza recheada com queijo.",
+      "image": "https://images.unsplash.com/photo-1598206572429-f02335a5edc6?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80",
+      "category": "food",
+      "subCategory": "pizza",
+      "price": 16
+    },
+    {
+      "id": 7,
+      "name": "Marguerita",
+      "description": "Pizza recheada com queijo, tomate e manjericão.",
+      "image": "https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
+      "category": "food",
+      "subCategory": "pizza",
+      "price": 17
+    },
+    {
+      "id": 8,
+      "name": "Pepperoni ",
+      "description": "Pizza recheada com pepperoni e queijo.",
+      "image": "https://images.unsplash.com/photo-1569153813457-6cecd871218d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "category": "food",
+      "subCategory": "pizza",
+      "price": 20
     }
   ],
+  "carts": [],
   "purchases": []
 }

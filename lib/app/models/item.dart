@@ -28,7 +28,7 @@ class Item {
     image = json['image'];
     category = json['category'];
     subCategory = json['subCategory'];
-    price = json['price'];
+    price = json['price'].toDouble();
   }
 
   // Codifica este objeto em um map.
