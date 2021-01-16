@@ -1,5 +1,14 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": 1,
+      "username": "lee",
+      "password": "1",
+      "name": "1",
+      "birthday": "01/01/1990",
+      "email": "lee@lee.com"
+    }
+  ],
   "items": [
     {
       "id": 1,
@@ -72,6 +81,96 @@
       "category": "food",
       "subCategory": "pizza",
       "price": 20
+    },
+    {
+      "id": 10,
+      "name": "Clássico",
+      "description": "Nada como um bom clássico!",
+      "image": "https://images.unsplash.com/photo-1596227402083-573ce04419e9?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
+      "category": "food",
+      "subCategory": "hamburger",
+      "price": 5
+    },
+    {
+      "id": 11,
+      "name": "Misto-quente",
+      "description": "Sanduíche recheado com queijo e presunto!",
+      "image": "https://images.unsplash.com/photo-1590076862697-0324a3938545?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
+      "category": "food",
+      "subCategory": "hamburger",
+      "price": 5
+    },
+    {
+      "id": 12,
+      "name": "Duplo",
+      "image": "https://images.unsplash.com/photo-1544037803-ed377ec9a75e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2114&q=80",
+      "description": "Hamburger com duas camadas.",
+      "category": "food",
+      "subCategory": "hamburger",
+      "price": 7.50
+    },
+    {
+      "id": 13,
+      "name": "Suco de laranja",
+      "image": "https://images.unsplash.com/photo-1564843055504-747cd8eaee92?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "description": "Suco de laranja geladinho!",
+      "category": "drink",
+      "subCategory": "juice",
+      "price": 2.00
+    },
+    {
+      "id": 14,
+      "name": "Suco de maracujá",
+      "image": "https://images.unsplash.com/photo-1564843055504-747cd8eaee92?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "description": "Suco de maracujá geladinho!",
+      "category": "drink",
+      "subCategory": "juice",
+      "price": 2.00
+    },
+    {
+      "id": 15,
+      "name": "Café",
+      "image": "https://images.unsplash.com/photo-1588345924941-02939d2753f0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=635&q=80",
+      "description": "Nada como um café quentinho!",
+      "category": "drink",
+      "subCategory": "juice",
+      "price": 2.00
+    },
+    {
+      "id": 16,
+      "name": "Chocolate",
+      "image": "https://images.unsplash.com/photo-1571181405951-1350bfd48223?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80",
+      "description": "Vitamina de chocolate.",
+      "category": "drink",
+      "subCategory": "smoothie",
+      "price": 4.50
+    },
+    {
+      "id": 17,
+      "name": "Uva",
+      "image": "https://images.unsplash.com/photo-1581343945411-50dca0f4b13e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80",
+      "description": "Vitamina de uva.",
+      "category": "drink",
+      "subCategory": "smoothie",
+      "price": 3.50
+    },
+    {
+      "id": 18,
+      "name": "Abacaxi",
+      "image": "https://images.unsplash.com/photo-1596392301391-e8622b210bd4?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80",
+      "description": "Vitamina de abacaxi.",
+      "category": "drink",
+      "subCategory": "smoothie",
+      "price": 3.50
+    },
+    {
+      "id": 19,
+      "name": "Morango",
+      "image": "https://images.unsplash.com/photo-1570696516188-ade861b84a49?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "description": "Vitamina de morango.",
+      "category": "drink",
+      "subCategory": "smoothie",
+      "price": 4.00
     }
   ],
   "carts": [],

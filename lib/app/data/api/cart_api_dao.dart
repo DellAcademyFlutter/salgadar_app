@@ -67,11 +67,25 @@ class CartAPIDao {
 
   /// Busca um [Cart].
   Future<Cart> getCart({id}) async {
-    final response = await http.get("$URL_CART/$id");
+    final response = await http.get("$URL_CART?$CART_ID=$id");
 
     // Caso sucesso
     if (response.statusCode == 200) {
-      return Cart.fromJson(json: jsonDecode(response.body));
+      return jsonDecode(response.body).toString() == '[]'
+          ? null
+          : Cart.fromJson(json: jsonDecode(response.body)[0]);
+    } else {
+      throw Exception('Ocorreu uma falha no carregamento.');
+    }
+  }
+
+  /// Verifica se contem [Cart].
+  Future<bool> contains({int id}) async {
+    final response = await http.get("$URL_USER?$CART_ID=$id");
+
+    // Caso sucesso
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body).toString() != '[]';
     } else {
       throw Exception('Ocorreu uma falha no carregamento.');
     }

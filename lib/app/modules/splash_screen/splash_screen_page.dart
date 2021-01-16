@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:salgadar_app/app/controllers/cart_controller.dart';
 import 'package:salgadar_app/app/controllers/item_controller.dart';
+import 'package:salgadar_app/app/controllers/user_controller.dart';
 import 'package:salgadar_app/app/modules/home/home_module.dart';
-import 'package:salgadar_app/app/shared/utils/preconfigure_salgadar.dart';
+import 'package:salgadar_app/app/modules/login/login_module.dart';
 
 class SplashScreenPage extends StatefulWidget {
   @override
@@ -58,10 +60,17 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   /// Carrega inicializacoes necessarias.
   Future runInitTasks(BuildContext context) async {
     final itemController = Modular.get<ItemController>();
+    final userController = Modular.get<UserController>();
+    final cartController = Modular.get<CartController>();
     //await PreconfigureSalgadar.initializeSalgadarItems();
     await itemController.initializeItems();
+    await cartController.initializeCart();
 
-    Future.delayed(const Duration(seconds: 5),
-        () => Modular.to.pushReplacementNamed(HomeModule.routeName));
+
+    await userController.loadLastLoggedUser();
+
+    userController.loggedUser != null
+        ? Modular.to.pushReplacementNamed(HomeModule.routeName)
+        : Modular.to.pushReplacementNamed(LoginModule.routeName);
   }
 }

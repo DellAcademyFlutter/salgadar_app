@@ -66,12 +66,26 @@ class UserAPIDao {
   }
 
   /// Busca um [User].
-  Future<User> getUser({id}) async {
-    final response = await http.get("$URL_USER/$id");
+  Future<User> getUser({String username}) async {
+    final response = await http.get("$URL_USER?$USER_USERNAME=$username");
 
     // Caso sucesso
     if (response.statusCode == 200) {
-      return User.fromJson(json: jsonDecode(response.body));
+      return jsonDecode(response.body).toString() == '[]'
+          ? null
+          : User.fromJson(json: jsonDecode(response.body)[0]);
+    } else {
+      throw Exception('Ocorreu uma falha no carregamento.');
+    }
+  }
+
+  /// Verifica se contem [User].
+  Future<bool> contains({String username}) async {
+    final response = await http.get("$URL_USER?$USER_USERNAME=$username");
+
+    // Caso sucesso
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body).toString() != '[]';
     } else {
       throw Exception('Ocorreu uma falha no carregamento.');
     }

@@ -66,12 +66,28 @@ class PurchaseAPIDao {
   }
 
   /// Busca um [Purchase].
-  Future<Purchase> getPurchase({id}) async {
-    final response = await http.get("$URL_PURCHASE/$id");
+  Future<Purchase> getPurchase({int userId, int cartId}) async {
+    final response = await http
+        .get("$URL_PURCHASE?$PURCHASE_USERID=$userId&$PURCHASE_CARTID=$cartId");
 
     // Caso sucesso
     if (response.statusCode == 200) {
-      return Purchase.fromJson(json: jsonDecode(response.body));
+      return jsonDecode(response.body).toString() == '[]'
+          ? null
+          : Purchase.fromJson(json: jsonDecode(response.body));
+    } else {
+      throw Exception('Ocorreu uma falha no carregamento.');
+    }
+  }
+
+  /// Verifica se contem [Purchase].
+  Future<bool> contains({int userId, int cartId}) async {
+    final response = await http
+        .get("$URL_USER?$PURCHASE_USERID=$userId&$PURCHASE_CARTID=$cartId");
+
+    // Caso sucesso
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body).toString() != '[]';
     } else {
       throw Exception('Ocorreu uma falha no carregamento.');
     }

@@ -67,11 +67,59 @@ class ItemAPIDao {
 
   /// Busca um [Item].
   Future<Item> getItem({id}) async {
-    final response = await http.get("$URL_ITEM/$id");
+    final response = await http.get("$URL_ITEM?$ITEM_ID=$id");
 
     // Caso sucesso
     if (response.statusCode == 200) {
-      return Item.fromJson(json: jsonDecode(response.body));
+      return jsonDecode(response.body).toString() == '[]'
+          ? null
+          : Item.fromJson(json: jsonDecode(response.body));
+    } else {
+      throw Exception('Ocorreu uma falha no carregamento.');
+    }
+  }
+
+  /// Verifica se contem [Item].
+  Future<bool> contains({int id}) async {
+    final response = await http.get("$URL_USER?$ITEM_ID=$id");
+
+    // Caso sucesso
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body).toString() != '[]';
+    } else {
+      throw Exception('Ocorreu uma falha no carregamento.');
+    }
+  }
+
+  /// Get - busca todos [Item] por categoria.
+  Future<List<Item>> getItemsByCategory({String category}) async {
+    final response = await http.get("$URL_ITEM?$ITEM_CATEGORY=$category");
+
+    // Caso sucesso.
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body);
+      final items = (jsonResponse as List)
+          .map((data) => Item.fromJson(json: data))
+          .toList();
+
+      return items;
+    } else {
+      throw Exception('Ocorreu uma falha no carregamento.');
+    }
+  }
+
+  /// Get - busca todos [Item] por subcategoria.
+  Future<List<Item>> getItemsBySubCategory({String subCategory}) async {
+    final response = await http.get("$URL_ITEM?$ITEM_SUBCATEGORY=$subCategory");
+
+    // Caso sucesso.
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body);
+      final items = (jsonResponse as List)
+          .map((data) => Item.fromJson(json: data))
+          .toList();
+
+      return items;
     } else {
       throw Exception('Ocorreu uma falha no carregamento.');
     }

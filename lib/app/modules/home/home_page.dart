@@ -18,11 +18,15 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Menu'),
+        centerTitle: true,
+      ),
       body: Consumer<ItemController>(
         builder: (context, value) {
           return GridView.count(
             crossAxisCount: 2,
-            padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
             mainAxisSpacing: 0,
             crossAxisSpacing: 8,
             children: itemController.items

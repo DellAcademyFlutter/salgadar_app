@@ -62,10 +62,20 @@ class ItemController extends ChangeNotifier {
     return -1;
   }
 
+  /// Retorna um [Item] dado seu [id].
+  getItemById(int id) {
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].id == id) {
+        return items[i];
+      }
+    }
+    return null;
+  }
+
   getItemImage({Item item, BuildContext context}) {
     // Online
     return Image.network(item.image,
-        height: MediaQuery.of(context).size.height * 0.10,
+        height: MediaQuery.of(context).size.height * 0.18,
         width: MediaQuery.of(context).size.width * 0.10,
         fit: BoxFit.fill);
     //

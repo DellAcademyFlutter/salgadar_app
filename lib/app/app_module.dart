@@ -20,6 +20,7 @@ import 'controllers/user_controller.dart';
 import 'data/api/user_api_dao.dart';
 import 'data/local/user_SQLite_dao.dart';
 import 'modules/home/home_module.dart';
+import 'modules/login/login_module.dart';
 
 class AppModule extends MainModule {
   @override
@@ -54,6 +55,7 @@ class AppModule extends MainModule {
   List<ModularRouter> get routers => [
         ModularRouter(SplashScreenModule.routeName,
             module: SplashScreenModule()),
+        ModularRouter(LoginModule.routeName, module: LoginModule()),
         ModularRouter(SettingsModule.routeName, module: SettingsModule()),
         ModularRouter(HomeModule.routeName, module: HomeModule()),
       ];

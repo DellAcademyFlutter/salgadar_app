@@ -14,6 +14,10 @@ const SUBCATEGORY_HAMBURGER = 'hambrger';
 const SUBCATEGORY_JUICE = 'juice';
 const SUBCATEGORY_SMOOTHIE = 'smoothie';
 
+// Usuario logado e seu carrinho
+const LOGGED_USER_LOCAL_STORAGE_KEY = 'loggedUser';
+const CURR_CART = 'cart';
+
 // Nomes das tabelas.
 const DATABASE_NAME = "salgadar.db";
 const TABLE_USER_NAME = 'users';

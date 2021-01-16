@@ -220,7 +220,7 @@ class PreconfigureSalgadar {
     ];
 
     for (var i = 0; i < items.length; i++) {
-      itemController.addItem(items[i]);
+      //itemController.addItem(items[i]);
     }
   }
 }

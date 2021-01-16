@@ -19,7 +19,7 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return Consumer<UserSettingsController>(builder: (context, value) {
       return MaterialApp(
-        title: "Bodega Biz",
+        title: "Salgadar App",
         theme: ThemeCollection.getAppTheme(),
         darkTheme: ThemeCollection.darkTheme(),
         initialRoute: SplashScreenModule.routeName,

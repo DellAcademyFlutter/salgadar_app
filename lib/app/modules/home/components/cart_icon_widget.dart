@@ -2,6 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/controllers/cart_controller.dart';
+import 'package:salgadar_app/app/modules/home/pages/cart_page.dart';
 
 class CartIconWidget extends StatefulWidget {
   @override
@@ -17,7 +18,8 @@ class _CartIconWidgetState extends State<CartIconWidget> {
         child: Consumer<CartController>(
           builder: (context, value) {
             return Badge(
-              badgeContent: Text('${controller.numItems}'),
+              badgeColor: Theme.of(context).buttonColor,
+              badgeContent: Text('${controller.totalItems}'),
               child: Icon(Icons.shopping_cart),
               position: BadgePosition.topStart(
                   start: MediaQuery.of(context).size.width * 0.03,
@@ -26,6 +28,6 @@ class _CartIconWidgetState extends State<CartIconWidget> {
             );
           },
         ),
-        onPressed: () => null);
+        onPressed: () => Modular.link.pushNamed(CartPage.routeName));
   }
 }
