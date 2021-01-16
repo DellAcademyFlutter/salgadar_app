@@ -11,7 +11,7 @@ const URL_HAMBURGER_CLASSIC = 'https://images.unsplash.com/photo-1596227402083-5
 const URL_HAMBURGER_MIXED_HAM_CHEESE = 'https://images.unsplash.com/photo-1590076862697-0324a3938545?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80';
 const URL_HAMBURGER_DOUBLE = 'https://images.unsplash.com/photo-1544037803-ed377ec9a75e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2114&q=80';
 const URL_JUICE_COFFEE = 'https://images.unsplash.com/photo-1588345924941-02939d2753f0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=635&q=80';
-const URL_JUICE_ORANGE = 'https://images.unsplash.com/photo-1564843055504-747cd8eaee92?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
+const URL_JUICE_ORANGE = 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2134&q=80';
 const URL_JUICE_PASSION_FRUIT = 'https://images.unsplash.com/photo-1564843055504-747cd8eaee92?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
 const URL_SMOOTHIE_CHOCOLATE = 'https://images.unsplash.com/photo-1571181405951-1350bfd48223?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80';
 const URL_SMOOTHIE_STRAWBERRY = 'https://images.unsplash.com/photo-1570696516188-ade861b84a49?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';

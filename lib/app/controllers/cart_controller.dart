@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:salgadar_app/app/controllers/item_controller.dart';
 import 'package:salgadar_app/app/controllers/user_controller.dart';
 import 'package:salgadar_app/app/models/cart.dart';
 import 'package:salgadar_app/app/models/item.dart';
@@ -15,12 +14,14 @@ class CartController extends ChangeNotifier {
   final userController = Modular.get<UserController>();
   Cart cart;
   int totalItems;
+  double totalValue;
 
   /// Inicializa os [ItemCart] de [Cart].
   initializeCart() {
     cart = Cart();
     cart.items = [];
     totalItems = 0;
+    totalValue = 0;
   }
 
   /// Adiciona uma unidade a um [ItemCart].
@@ -36,7 +37,21 @@ class CartController extends ChangeNotifier {
     await SharedPrefs.save(getUserCurrCartKey(user: userController.loggedUser),
         jsonEncode(cart.toJson()));
 
+    totalValue += item.price;
     totalItems++;
+    notifyListeners();
+  }
+
+  /// Remove uma unidade de um [ItemCart].
+  removeItem(Item item) async {
+    await decrementItem(itemId: item.id);
+
+    // Cache em Local Storage
+    await SharedPrefs.save(getUserCurrCartKey(user: userController.loggedUser),
+        jsonEncode(cart.toJson()));
+
+    totalValue -= item.price;
+    totalItems--;
     notifyListeners();
   }
 
@@ -61,13 +76,6 @@ class CartController extends ChangeNotifier {
         }
       }
     }
-
-    // Cache em Local Storage
-    await SharedPrefs.save(getUserCurrCartKey(user: userController.loggedUser),
-        jsonEncode(cart.toJson()));
-
-    totalItems--;
-    notifyListeners();
   }
 
   /// Verifica se contem um dado [Item].

@@ -48,7 +48,7 @@
     },
     {
       "id": 5,
-      "name": "Bacon",
+      "name": "Pizza Bacon",
       "description": "Pizza recheada com bacon.",
       "image": "https://images.unsplash.com/photo-1566843972063-21b936128515?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
       "category": "food",
@@ -57,7 +57,7 @@
     },
     {
       "id": 6,
-      "name": "Queijo",
+      "name": "Pizza Queijo",
       "description": "Pizza recheada com queijo.",
       "image": "https://images.unsplash.com/photo-1598206572429-f02335a5edc6?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80",
       "category": "food",
@@ -66,7 +66,7 @@
     },
     {
       "id": 7,
-      "name": "Marguerita",
+      "name": "Pizza Marguerita",
       "description": "Pizza recheada com queijo, tomate e manjericão.",
       "image": "https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
       "category": "food",
@@ -75,7 +75,7 @@
     },
     {
       "id": 8,
-      "name": "Pepperoni ",
+      "name": "Sanduíche Pepperoni ",
       "description": "Pizza recheada com pepperoni e queijo.",
       "image": "https://images.unsplash.com/photo-1569153813457-6cecd871218d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "category": "food",
@@ -84,7 +84,7 @@
     },
     {
       "id": 10,
-      "name": "Clássico",
+      "name": "Sanduíche Clássico",
       "description": "Nada como um bom clássico!",
       "image": "https://images.unsplash.com/photo-1596227402083-573ce04419e9?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
       "category": "food",
@@ -93,7 +93,7 @@
     },
     {
       "id": 11,
-      "name": "Misto-quente",
+      "name": "Sanduíche Misto-quente",
       "description": "Sanduíche recheado com queijo e presunto!",
       "image": "https://images.unsplash.com/photo-1590076862697-0324a3938545?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
       "category": "food",
@@ -102,7 +102,7 @@
     },
     {
       "id": 12,
-      "name": "Duplo",
+      "name": "Sanduíche Duplo",
       "image": "https://images.unsplash.com/photo-1544037803-ed377ec9a75e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2114&q=80",
       "description": "Hamburger com duas camadas.",
       "category": "food",
@@ -112,7 +112,7 @@
     {
       "id": 13,
       "name": "Suco de laranja",
-      "image": "https://images.unsplash.com/photo-1564843055504-747cd8eaee92?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "image": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2134&q=80",
       "description": "Suco de laranja geladinho!",
       "category": "drink",
       "subCategory": "juice",
@@ -138,7 +138,7 @@
     },
     {
       "id": 16,
-      "name": "Chocolate",
+      "name": "Milkshake de chocolate",
       "image": "https://images.unsplash.com/photo-1571181405951-1350bfd48223?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80",
       "description": "Vitamina de chocolate.",
       "category": "drink",
@@ -147,7 +147,7 @@
     },
     {
       "id": 17,
-      "name": "Uva",
+      "name": "Milkshake de uva",
       "image": "https://images.unsplash.com/photo-1581343945411-50dca0f4b13e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80",
       "description": "Vitamina de uva.",
       "category": "drink",
@@ -156,7 +156,7 @@
     },
     {
       "id": 18,
-      "name": "Abacaxi",
+      "name": "Milkshake de abacaxi",
       "image": "https://images.unsplash.com/photo-1596392301391-e8622b210bd4?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80",
       "description": "Vitamina de abacaxi.",
       "category": "drink",
@@ -165,7 +165,7 @@
     },
     {
       "id": 19,
-      "name": "Morango",
+      "name": "Milkshake de morango",
       "image": "https://images.unsplash.com/photo-1570696516188-ade861b84a49?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
       "description": "Vitamina de morango.",
       "category": "drink",
