@@ -30,7 +30,8 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             mainAxisSpacing: 0,
             crossAxisSpacing: 8,
             children: itemController.items
-                .map<ItemWidget>((Item item) => ItemWidget(item: item))
+                .map<ItemWidget>(
+                    (Item item) => ItemWidget(key: UniqueKey(), item: item))
                 .toList(),
           );
         },

@@ -7,6 +7,7 @@ class Purchase {
     this.cartId,
     this.totalValue,
     this.date,
+    this.isDeleted
   });
 
   // Atributos da classe.

@@ -23,7 +23,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
   void initState() {
     super.initState();
     item = itemController
-        .getItemById(cartController.cart.items[widget.index].itemId);
+        .getItemById(cartController.userCart.items[widget.index].itemId);
   }
 
   @override
@@ -34,7 +34,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Text(
-              '${item.name} (R\$ ${cartController.cart.items[widget.index].itemPrice})'),
+              '${item.name} (R\$ ${cartController.userCart.items[widget.index].itemPrice})'),
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
@@ -45,7 +45,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
               onPressed: () async => cartController.addItem(item),
             ),
             Text(
-                'x${cartController.cart.items[widget.index].qtt}'),
+                'x${cartController.userCart.items[widget.index].qtt}'),
             IconButton(
               icon: Icon(Icons.remove),
               color: Colors.red,

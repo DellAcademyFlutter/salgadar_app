@@ -15,7 +15,7 @@ class Cart {
   // Construtor a partir de um json.
   Cart.fromJson({Map<String, dynamic> json}) {
     id = json['id'];
-    items = json['items'].map((item) => ItemCart.fromJson(json: item)).toList();
+    items = json['items'].map<ItemCart>((item) => ItemCart.fromJson(json: item)).toList();
   }
 
   // Codifica este objeto em um map.

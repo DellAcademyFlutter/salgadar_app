@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/controllers/cart_controller.dart';
-import 'package:salgadar_app/app/modules/home/components/cart_icon_widget.dart';
+import 'package:salgadar_app/app/controllers/purchase_controller.dart';
+import 'package:salgadar_app/app/controllers/user_controller.dart';
 import 'package:salgadar_app/app/modules/home/components/cart_item_widget.dart';
 import 'package:salgadar_app/app/shared/utils/math_utils.dart';
 
@@ -15,6 +16,8 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   final cartController = Modular.get<CartController>();
+  final userCotroller = Modular.get<UserController>();
+  final purchaseController = Modular.get<PurchaseController>();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,7 @@ class _CartPageState extends State<CartPage> {
               ),
               Expanded(
                 child: ListView.builder(
-                    itemCount: cartController.cart.items.length,
+                    itemCount: cartController.userCart.items.length,
                     itemBuilder: (context, index) {
                       return CartItemWidget(key: UniqueKey(), index: index);
                     }),
@@ -54,7 +57,7 @@ class _CartPageState extends State<CartPage> {
               ListTile(
                   title: RaisedButton(
                 child: Text("Finalizar compra!"),
-                onPressed: null,
+                onPressed: () async => await purchaseController.addPurchase(),
               )),
             ],
           );

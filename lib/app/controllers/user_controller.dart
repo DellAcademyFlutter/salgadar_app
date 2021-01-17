@@ -56,7 +56,7 @@ class UserController extends ChangeNotifier {
   }
 
   /// Salva o ultimo [User] logado em Local Storage.
-  rememberLastLoggedUser({String username}) async {
+  cacheLastLoggedUser({String username}) async {
     loggedUser = await userAPIDao.getUser(username: username);
     SharedPrefs.save(
         LOGGED_USER_LOCAL_STORAGE_KEY, jsonEncode(loggedUser.toJson()));

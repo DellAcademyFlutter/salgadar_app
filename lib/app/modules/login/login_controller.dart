@@ -30,7 +30,7 @@ class LoginController implements Disposable {
         .isUserCredentials(username: username, password: password)
         .then((value) async {
       if (value) {
-        await userController.rememberLastLoggedUser(username: username);
+        await userController.cacheLastLoggedUser(username: username);
         Modular.to.pushReplacementNamed(HomeModule.routeName);
       } else {
         showAlertDialog(

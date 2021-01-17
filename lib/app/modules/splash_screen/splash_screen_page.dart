@@ -63,11 +63,11 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     final userController = Modular.get<UserController>();
     final cartController = Modular.get<CartController>();
     //await PreconfigureSalgadar.initializeSalgadarItems();
+    await userController.loadLastLoggedUser();
     await itemController.initializeItems();
     await cartController.initializeCart();
 
 
-    await userController.loadLastLoggedUser();
 
     userController.loggedUser != null
         ? Modular.to.pushReplacementNamed(HomeModule.routeName)

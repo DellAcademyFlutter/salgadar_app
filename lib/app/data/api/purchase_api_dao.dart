@@ -21,7 +21,7 @@ class PurchaseAPIDao {
   /// Put - atualiza um [Card].
   Future<Purchase> putPurchase(Purchase purchase) async {
     final response = await http.put(
-      '$URL_PURCHASE/${purchase.userId & purchase.cartId}',
+      '$URL_PURCHASE/${purchase.userId}&${purchase.cartId}',
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -43,9 +43,15 @@ class PurchaseAPIDao {
     // Caso sucesso.
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
-      final purchases = (jsonResponse as List)
-          .map((data) => Purchase.fromJson(json: data))
-          .toList();
+
+      // Recupera apenas as que nao estao deletadas.
+      final jsonResponseList = jsonResponse as List;
+      final purchases = [];
+      for (var i = 0; i < jsonResponseList.length; i++) {
+        if (jsonResponseList[i][PURCHASE_ISDELETED] == '0') {
+          purchases.add(Purchase.fromJson(json: jsonResponseList[i]));
+        }
+      }
 
       return purchases;
     } else {

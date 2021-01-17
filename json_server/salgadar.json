@@ -107,7 +107,7 @@
       "description": "Hamburger com duas camadas.",
       "category": "food",
       "subCategory": "hamburger",
-      "price": 7.50
+      "price": 7.5
     },
     {
       "id": 13,
@@ -116,7 +116,7 @@
       "description": "Suco de laranja geladinho!",
       "category": "drink",
       "subCategory": "juice",
-      "price": 2.00
+      "price": 2
     },
     {
       "id": 14,
@@ -125,7 +125,7 @@
       "description": "Suco de maracujá geladinho!",
       "category": "drink",
       "subCategory": "juice",
-      "price": 2.00
+      "price": 2
     },
     {
       "id": 15,
@@ -134,7 +134,7 @@
       "description": "Nada como um café quentinho!",
       "category": "drink",
       "subCategory": "juice",
-      "price": 2.00
+      "price": 2
     },
     {
       "id": 16,
@@ -143,7 +143,7 @@
       "description": "Vitamina de chocolate.",
       "category": "drink",
       "subCategory": "smoothie",
-      "price": 4.50
+      "price": 4.5
     },
     {
       "id": 17,
@@ -152,7 +152,7 @@
       "description": "Vitamina de uva.",
       "category": "drink",
       "subCategory": "smoothie",
-      "price": 3.50
+      "price": 3.5
     },
     {
       "id": 18,
@@ -161,7 +161,7 @@
       "description": "Vitamina de abacaxi.",
       "category": "drink",
       "subCategory": "smoothie",
-      "price": 3.50
+      "price": 3.5
     },
     {
       "id": 19,
@@ -170,9 +170,11 @@
       "description": "Vitamina de morango.",
       "category": "drink",
       "subCategory": "smoothie",
-      "price": 4.00
+      "price": 4
     }
   ],
-  "carts": [],
-  "purchases": []
+  "carts": [
+  ],
+  "purchases": [
+  ]
 }

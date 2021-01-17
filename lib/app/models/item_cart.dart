@@ -20,7 +20,7 @@ class ItemCart {
     itemId = json['itemId'];
     cartId = json['cartId'];
     qtt = json['qtt'];
-    itemPrice = json['itemPrice'];
+    itemPrice = json['itemPrice'].toDouble();
   }
 
   // Codifica este objeto em um map.

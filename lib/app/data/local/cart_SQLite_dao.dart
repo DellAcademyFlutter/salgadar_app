@@ -7,13 +7,13 @@ import 'package:flutter/widgets.dart';
 
 class CartSQLiteDao {
   /// Insere em registro [Cart] em sua tabela.
-  Future<void> insertCart(Cart cart) async {
+  Future<void> insertCart({Map<String, dynamic> cartMap}) async {
     try {
       final db = await DBHelper.getDatabase();
 
       await db.insert(
         TABLE_CART_NAME,
-        cart.toJson(),
+        cartMap,
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     } catch (ex) {
