@@ -20,32 +20,32 @@ class _ItemWidgetState extends State<ItemWidget> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async => await cartController.addItem(widget.item),
-      child: Card(
-        child: Table(
-          border: TableBorder.all(),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(),
+          color: Theme.of(context).cardColor,
+        ),
+        child: Column(
           children: [
-            TableRow(children: [
-              Container(
-                child: itemController.getItemImage(
-                    item: widget.item, context: context),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.175,
+              child: itemController.getItemImage(
+                  item: widget.item, context: context),
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  SingleChildScrollView(
+                      padding: myTextPadding(),
+                      scrollDirection: Axis.horizontal,
+                      child: Text('${widget.item.name}')),
+                  SingleChildScrollView(
+                      padding: myTextPadding(),
+                      scrollDirection: Axis.horizontal,
+                      child: Text('R\$: ${widget.item.price}')),
+                ],
               ),
-            ]),
-            TableRow(
-              children: [
-                SingleChildScrollView(
-                    padding: myTextPadding(),
-                    scrollDirection: Axis.horizontal,
-                    child: Text('${widget.item.name}'))
-              ],
-            ),
-            TableRow(
-              children: [
-                SingleChildScrollView(
-                    padding: myTextPadding(),
-                    scrollDirection: Axis.horizontal,
-                    child: Text('R\$: ${widget.item.price}')),
-              ],
-            ),
+            )
           ],
         ),
       ),

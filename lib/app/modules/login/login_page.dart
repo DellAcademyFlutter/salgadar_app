@@ -111,7 +111,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               child: FlatButton(
                 onPressed: () async {
                   await controller.initializeHomePage();
-                  Modular.link.pushNamed(SignUpPage.routeName);
+                  Modular.link.pushNamed(SignUpPage.routeName,
+                      arguments: SignUpPageArguments(user: null));
                 },
                 child: Text('Não é cadastrado? Cadastre-se aqui!'),
               ),

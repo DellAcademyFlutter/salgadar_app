@@ -20,8 +20,7 @@ class PurchaseController extends ChangeNotifier {
   initializeUserPurchases() async {
     userPurchases = userController.loggedUser != null
         ? await purchaseAPIDao.getUserPurchases(
-            userId: userController.loggedUser.id,
-    getDeleted: false)
+            userId: userController.loggedUser.id, getDeleted: false)
         : [];
   }
 
@@ -36,10 +35,13 @@ class PurchaseController extends ChangeNotifier {
       date: getCurrentDate(),
       totalValue:
           MathUtils.round(number: cartController.totalValue, decimalPlaces: 2),
+      totalQtt: cartController.totalItems,
       isDeleted: false,
     );
 
-    await purchaseAPIDao.postPurchase(purchase).then((value) => purchase.id = value);
+    await purchaseAPIDao
+        .postPurchase(purchase)
+        .then((value) => purchase.id = value);
     await purchaseSQLiteDao.insertPurchase(purchase);
     userPurchases.add(purchase);
     cartController.reinitializeCart();

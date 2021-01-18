@@ -5,21 +5,15 @@ import 'package:salgadar_app/app/controllers/user_controller.dart';
 import 'package:salgadar_app/app/controllers/user_settings_controller.dart';
 import 'package:salgadar_app/app/modules/login/login_module.dart';
 
-class HomeController {
+class HomeController implements Disposable {
   final userController = Modular.get<UserController>();
   final userSettingsController = Modular.get<UserSettingsController>();
   final purchaseController = Modular.get<PurchaseController>();
-  final selectedIndex = ValueNotifier(0);
   final pageViewController = PageController();
 
   @override
   void dispose() {
     pageViewController.dispose();
-  }
-
-  /// Modifica o valor do [selectedIndex].
-  changeSelectedIndex(int index) {
-    selectedIndex.value = index;
   }
 
   /// Realiza logout de [User].

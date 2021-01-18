@@ -20,7 +20,8 @@ class LoginModule extends ChildModule {
         ),
         ModularRouter(
           SignUpPage.routeName,
-          child: (_, args) => SignUpPage(),
+          child: (_, args) => SignUpPage(user: args.data.user),
+          transition: TransitionType.leftToRightWithFade,
         ),
       ];
 

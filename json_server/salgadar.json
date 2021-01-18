@@ -4,7 +4,7 @@
       "id": 1,
       "username": "lee",
       "password": "1",
-      "name": "1",
+      "name": "Lee Jack Chan",
       "birthday": "01/01/1990",
       "email": "lee@lee.com"
     },
@@ -194,9 +194,15 @@
       "id": 1,
       "items": [
         {
-          "itemId": 4,
+          "itemId": 2,
           "cartId": 1,
           "qtt": 1,
+          "itemPrice": 1
+        },
+        {
+          "itemId": 1,
+          "cartId": 1,
+          "qtt": 2,
           "itemPrice": 3
         },
         {
@@ -204,233 +210,6 @@
           "cartId": 1,
           "qtt": 1,
           "itemPrice": 0.5
-        },
-        {
-          "itemId": 6,
-          "cartId": 1,
-          "qtt": 1,
-          "itemPrice": 16
-        },
-        {
-          "itemId": 7,
-          "cartId": 1,
-          "qtt": 1,
-          "itemPrice": 17
-        },
-        {
-          "itemId": 8,
-          "cartId": 1,
-          "qtt": 1,
-          "itemPrice": 20
-        },
-        {
-          "itemId": 10,
-          "cartId": 1,
-          "qtt": 1,
-          "itemPrice": 5
-        },
-        {
-          "itemId": 11,
-          "cartId": 1,
-          "qtt": 1,
-          "itemPrice": 5
-        },
-        {
-          "itemId": 12,
-          "cartId": 1,
-          "qtt": 1,
-          "itemPrice": 7.5
-        },
-        {
-          "itemId": 1,
-          "cartId": 1,
-          "qtt": 1,
-          "itemPrice": 3
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "items": []
-    },
-    {
-      "id": 3,
-      "items": [
-        {
-          "itemId": 1,
-          "cartId": 3,
-          "qtt": 1,
-          "itemPrice": 3
-        },
-        {
-          "itemId": 2,
-          "cartId": 3,
-          "qtt": 1,
-          "itemPrice": 1
-        },
-        {
-          "itemId": 6,
-          "cartId": 3,
-          "qtt": 4,
-          "itemPrice": 16
-        },
-        {
-          "itemId": 5,
-          "cartId": 3,
-          "qtt": 2,
-          "itemPrice": 18
-        },
-        {
-          "itemId": 7,
-          "cartId": 3,
-          "qtt": 2,
-          "itemPrice": 17
-        },
-        {
-          "itemId": 8,
-          "cartId": 3,
-          "qtt": 2,
-          "itemPrice": 20
-        },
-        {
-          "itemId": 11,
-          "cartId": 3,
-          "qtt": 2,
-          "itemPrice": 5
-        },
-        {
-          "itemId": 10,
-          "cartId": 3,
-          "qtt": 4,
-          "itemPrice": 5
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "items": [
-        {
-          "itemId": 10,
-          "cartId": 4,
-          "qtt": 3,
-          "itemPrice": 5
-        },
-        {
-          "itemId": 11,
-          "cartId": 4,
-          "qtt": 2,
-          "itemPrice": 5
-        },
-        {
-          "itemId": 6,
-          "cartId": 4,
-          "qtt": 2,
-          "itemPrice": 16
-        },
-        {
-          "itemId": 5,
-          "cartId": 4,
-          "qtt": 1,
-          "itemPrice": 18
-        },
-        {
-          "itemId": 2,
-          "cartId": 4,
-          "qtt": 2,
-          "itemPrice": 1
-        },
-        {
-          "itemId": 14,
-          "cartId": 4,
-          "qtt": 5,
-          "itemPrice": 2
-        },
-        {
-          "itemId": 13,
-          "cartId": 4,
-          "qtt": 1,
-          "itemPrice": 2
-        },
-        {
-          "itemId": 16,
-          "cartId": 4,
-          "qtt": 1,
-          "itemPrice": 4.5
-        },
-        {
-          "itemId": 17,
-          "cartId": 4,
-          "qtt": 5,
-          "itemPrice": 3.5
-        },
-        {
-          "itemId": 19,
-          "cartId": 4,
-          "qtt": 2,
-          "itemPrice": 4
-        },
-        {
-          "itemId": 18,
-          "cartId": 4,
-          "qtt": 1,
-          "itemPrice": 3.5
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "items": [
-        {
-          "itemId": 17,
-          "cartId": 5,
-          "qtt": 2,
-          "itemPrice": 3.5
-        },
-        {
-          "itemId": 16,
-          "cartId": 5,
-          "qtt": 2,
-          "itemPrice": 4.5
-        },
-        {
-          "itemId": 18,
-          "cartId": 5,
-          "qtt": 1,
-          "itemPrice": 3.5
-        },
-        {
-          "itemId": 19,
-          "cartId": 5,
-          "qtt": 1,
-          "itemPrice": 4
-        }
-      ]
-    },
-    {
-      "id": 6,
-      "items": [
-        {
-          "itemId": 4,
-          "cartId": 6,
-          "qtt": 1,
-          "itemPrice": 3
-        },
-        {
-          "itemId": 3,
-          "cartId": 6,
-          "qtt": 1,
-          "itemPrice": 0.5
-        }
-      ]
-    },
-    {
-      "id": 7,
-      "items": [
-        {
-          "itemId": 1,
-          "cartId": 7,
-          "qtt": 1,
-          "itemPrice": 3
         }
       ]
     }
@@ -440,55 +219,8 @@
       "id": 1,
       "userId": 1,
       "cartId": 1,
-      "totalValue": 77,
-      "date": "18/1/2021",
-      "isDeleted": 1
-    },
-    {
-      "id": 2,
-      "userId": 1,
-      "cartId": 2,
-      "totalValue": 0,
-      "date": "18/1/2021",
-      "isDeleted": 1
-    },
-    {
-      "id": 3,
-      "userId": 1,
-      "cartId": 3,
-      "totalValue": 208,
-      "date": "18/1/2021",
-      "isDeleted": 1
-    },
-    {
-      "id": 4,
-      "userId": 1,
-      "cartId": 4,
-      "totalValue": 122.5,
-      "date": "18/1/2021",
-      "isDeleted": 0
-    },
-    {
-      "id": 5,
-      "userId": 1,
-      "cartId": 5,
-      "totalValue": 23.5,
-      "date": "18/1/2021",
-      "isDeleted": 0
-    },
-    {
-      "id": 6,
-      "userId": 1,
-      "cartId": 6,
-      "totalValue": 3.5,
-      "date": "18/1/2021",
-      "isDeleted": 0
-    },
-    {
-      "id": 7,
-      "userId": 1,
-      "cartId": 7,
-      "totalValue": 3,
+      "totalValue": 7.5,
+      "totalQtt": 4,
       "date": "18/1/2021",
       "isDeleted": 0
     }

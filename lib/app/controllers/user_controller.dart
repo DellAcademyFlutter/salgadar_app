@@ -40,7 +40,14 @@ class UserController extends ChangeNotifier {
   }
 
   /// Verifica se contem um [User].
-  Future<bool> containsUser({String username}) async {
+  Future<bool> containsUser({String username, User userEditing}) async {
+    // Caso de atualizacao de usuario
+    if (userEditing != null) {
+      if (userEditing.username == username) {
+        return false;
+      }
+    }
+
     final result = await (userAPIDao.contains(
         username: StringUtils.trimLowerCase(username)));
     return result;

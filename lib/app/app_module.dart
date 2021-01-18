@@ -20,6 +20,7 @@ import 'controllers/user_controller.dart';
 import 'data/api/user_api_dao.dart';
 import 'data/local/user_SQLite_dao.dart';
 import 'modules/home/home_module.dart';
+import 'modules/login/controllers/sign_up_page_controller.dart';
 import 'modules/login/login_module.dart';
 import 'modules/user_purchase/user_purchase_module.dart';
 
@@ -27,6 +28,7 @@ class AppModule extends MainModule {
   @override
 
   /// Lista de injecoes de dependencia do projeto.
+  /// Se dois modulos usam um mesmo controller, ele deve ser global.
   List<Bind> get binds => [
         Bind((i) => AppController()),
         Bind((i) => UserSettingsController()),
@@ -34,6 +36,7 @@ class AppModule extends MainModule {
         Bind((i) => ItemController()),
         Bind((i) => CartController()),
         Bind((i) => PurchaseController()),
+        Bind((i) => SignUpPageController()),
         Bind((i) => UserAPIDao()),
         Bind((i) => ItemAPIDao()),
         Bind((i) => CartAPIDao()),
@@ -59,6 +62,7 @@ class AppModule extends MainModule {
         ModularRouter(LoginModule.routeName, module: LoginModule()),
         ModularRouter(SettingsModule.routeName, module: SettingsModule()),
         ModularRouter(HomeModule.routeName, module: HomeModule()),
-        ModularRouter(UserPurchaseModule.routeName, module: UserPurchaseModule()),
+        ModularRouter(UserPurchaseModule.routeName,
+            module: UserPurchaseModule()),
       ];
 }

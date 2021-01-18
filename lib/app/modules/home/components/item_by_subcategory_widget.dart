@@ -28,7 +28,7 @@ class _ItemBySubCateboryWidgetState extends State<ItemBySubCateboryWidget> {
             ? GridView.count(
                 crossAxisCount: 2,
                 padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                mainAxisSpacing: 0,
+                mainAxisSpacing: 4,
                 crossAxisSpacing: 8,
                 children: snapshot.data
                     .map<ItemWidget>(

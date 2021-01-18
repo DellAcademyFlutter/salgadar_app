@@ -46,6 +46,16 @@ class _DetailedPurchasePageState extends State<DetailedPurchasePage> {
           ListTile(
             title: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
+              child: Text('Preço total: '),
+            ),
+            trailing: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text('${widget.purchase.totalValue}'),
+            ),
+          ),
+          ListTile(
+            title: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
               child: Text('Data: '),
             ),
             trailing: SingleChildScrollView(
@@ -53,19 +63,31 @@ class _DetailedPurchasePageState extends State<DetailedPurchasePage> {
               child: Text('${widget.purchase.date}'),
             ),
           ),
-          ValueListenableBuilder(valueListenable: purchaseItems,
-            builder: (context, value, child) {
-              return Expanded(
-                child: purchaseItems.value != null
-                    ? ListView(
-                  children: purchaseItems.value
-                      .map<PurchaseItemWidget>((ItemCart itemCart) =>
-                      PurchaseItemWidget(
-                          key: UniqueKey(), itemCart: itemCart))
-                      .toList(),
-                )
-                    : Center(child: CircularProgressIndicator()),
-              );
+          ListTile(
+            title: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text('Items: '),
+            ),
+            trailing: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text('${widget.purchase.totalQtt}'),
+            ),
+          ),
+          FutureBuilder(
+            future: cartController.getItemsCart(cartId: widget.purchase.cartId),
+            builder:
+                (BuildContext context, AsyncSnapshot<List<ItemCart>> snapshot) {
+              return snapshot.hasData
+                  ? Expanded(
+                      child: ListView.builder(
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (context, index) {
+                            return PurchaseItemWidget(
+                                key: UniqueKey(),
+                                itemCart: snapshot.data[index]);
+                          }),
+                    )
+                  : Center(child: CircularProgressIndicator());
             },
           ),
         ],

@@ -7,6 +7,7 @@ class Purchase {
       this.userId,
       this.cartId,
       this.totalValue,
+      this.totalQtt,
       this.date,
       this.isDeleted});
 
@@ -15,6 +16,7 @@ class Purchase {
   int userId;
   int cartId;
   double totalValue;
+  int totalQtt;
   String date;
   bool isDeleted;
 
@@ -24,6 +26,7 @@ class Purchase {
     userId = json['userId'];
     cartId = json['cartId'];
     totalValue = json['totalValue'].toDouble();
+    totalQtt = json['totalQtt'];
     date = json['date'];
     isDeleted = json['isDeleted'] == '1';
   }
@@ -35,6 +38,7 @@ class Purchase {
     json['userId'] = userId;
     json['cartId'] = cartId;
     json['totalValue'] = totalValue;
+    json['totalQtt'] = totalQtt;
     json['date'] = date;
     json['isDeleted'] = isDeleted ? 1 : 0;
     return json;
@@ -46,6 +50,7 @@ class Purchase {
     userId = otherPurchase.userId;
     cartId = otherPurchase.cartId;
     totalValue = otherPurchase.totalValue;
+    totalQtt = otherPurchase.totalQtt;
     date = otherPurchase.date;
     isDeleted = otherPurchase.isDeleted;
   }

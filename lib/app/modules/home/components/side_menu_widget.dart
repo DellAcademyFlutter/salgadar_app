@@ -4,7 +4,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/controllers/user_controller.dart';
 import 'package:salgadar_app/app/modules/settings/settings_module.dart';
 import 'package:salgadar_app/app/modules/user_purchase/user_purchase_module.dart';
-import 'package:salgadar_app/app/modules/user_purchase/user_purchase_page.dart';
 
 import '../home_controller.dart';
 
@@ -26,10 +25,19 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.fastfood),
-                Center(child: Text('Bem vindo ao Salgadar App,')),
-                Center(child: Text('${userController.loggedUser.name}!')),
-
+                Icon(
+                  Icons.fastfood,
+                  size: MediaQuery.of(context).size.width * 0.2,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Center(child: Text('Bem vindo ao Salgadar App,')),
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child:
+                      Center(child: Text('${userController.loggedUser.name}!')),
+                ),
               ],
             ),
             decoration: BoxDecoration(

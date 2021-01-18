@@ -4,6 +4,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/controllers/user_settings_controller.dart';
 import 'package:salgadar_app/app/shared/themes/app_themes.dart';
 
+final List<String> values = [
+  'Sistema',
+  'Tema Claro',
+  'Tema Escuro',
+  'Alto contraste'
+];
+
 /// Esta classe retorna um widget referente a configuracao de tema escuro ou claro.
 class ChangeThemeWidget extends StatefulWidget {
   @override
@@ -26,8 +33,11 @@ class _State extends State<ChangeThemeWidget> {
       builder: (context, value) {
         return Card(
           child: ListTile(
-            title: Text('Tema'),
-            subtitle: Text(themeDescriptionMap[settings.userTheme]),
+            title: SingleChildScrollView(
+                scrollDirection: Axis.horizontal, child: Text('Tema')),
+            subtitle: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Text(themeDescriptionMap[settings.userTheme])),
             trailing: LightDarkThemeDropDownButton(),
           ),
         );
@@ -48,13 +58,7 @@ class LightDarkThemeDropDownButton extends StatefulWidget {
 /// Esta classe retorna um widget de dropdown de menu escuro ou claro.
 class LightDarkThemeDropDownButtonState
     extends State<LightDarkThemeDropDownButton> {
-  List<String> values = [
-    'Sistema',
-    'Tema Claro',
-    'Tema Escuro',
-    'Alto contraste'
-  ];
-  String dropdownValue = 'Sistema';
+  String dropdownValue = _getDropdownValue();
   final settings = Modular.get<UserSettingsController>();
 
   @override
@@ -91,9 +95,31 @@ class LightDarkThemeDropDownButtonState
       items: values.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(value),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Text(value),
+          ),
         );
       }).toList(),
     );
+  }
+}
+
+/// Retorna o valor inicial do dropdown.
+_getDropdownValue() {
+  final userSettingController = Modular.get<UserSettingsController>();
+  switch (userSettingController.userTheme) {
+    case AppThemesEnum.lightTheme:
+      return 'Tema Claro';
+      break;
+    case AppThemesEnum.darkTheme:
+      return 'Tema Escuro';
+      break;
+    case AppThemesEnum.highContrast:
+      return 'Alto contraste';
+      break;
+    default:
+      return 'Sistema';
+      break;
   }
 }

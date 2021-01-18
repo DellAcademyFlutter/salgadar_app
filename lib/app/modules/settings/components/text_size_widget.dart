@@ -18,9 +18,11 @@ class TextSizeWidget extends StatelessWidget {
           children: [
             Container(
               alignment: Alignment.topLeft,
-              child: Text(
-                'Tamanho da fonte',
-              ),
+              child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Text(
+                    'Tamanho da fonte',
+                  )),
             ),
             Container(child: TextSizeSlider()),
           ],
@@ -67,7 +69,9 @@ class TextSizeSlider extends StatelessWidget {
               ),
             ),
             RaisedButton(
-              child: Text('Tamanho padrão'),
+              child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Text('Tamanho padrão')),
               onPressed:
                   settings.fontSize == UserSettingsController.DEFAULT_FONT_SIZE
                       ? null

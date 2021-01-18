@@ -1,30 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:salgadar_app/app/models/user.dart';
 import 'package:salgadar_app/app/modules/login/controllers/sign_up_page_controller.dart';
 import 'package:salgadar_app/app/shared/utils/validator.dart';
 
+class SignUpPageArguments {
+  const SignUpPageArguments({this.user});
+
+  final User user;
+}
+
 class SignUpPage extends StatefulWidget {
   static const routeName = '/signUp';
+
+  const SignUpPage({this.user});
+
+  final User user;
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends ModularState<SignUpPage, SignUpPageController> {
+class _SignUpPageState extends State<SignUpPage> {
+  final controller = Modular.get<SignUpPageController>();
+
   @override
   void initState() {
     super.initState();
 
-    controller.initializeSignUpPage();
+    controller.initializeSignUpPage(user: widget.user);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Cadastro de usuário'),
-        centerTitle: true,
-      ),
+      appBar: widget.user == null
+          ? AppBar(
+              title: Text('Cadastro de usuário'),
+              centerTitle: true,
+            )
+          : null,
       body: Form(
         key: controller.formKey,
         autovalidateMode: controller.signUpIsValidating,
@@ -109,7 +124,9 @@ class _SignUpPageState extends ModularState<SignUpPage, SignUpPageController> {
               child: RaisedButton(
                 child: Text('Finalizar cadastro'),
                 onPressed: () async {
-                  await controller.registerUser(context: context).then((value) {
+                  await controller
+                      .registerUser(context: context, userEditing: widget.user)
+                      .then((value) {
                     if (value) {
                       Modular.to.pop();
                       // TODO: ANIMATION

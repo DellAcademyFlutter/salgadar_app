@@ -90,14 +90,10 @@ class ItemController extends ChangeNotifier {
   getItemImage({Item item, BuildContext context}) {
     // Online
     return Image.network(item.image,
-        height: MediaQuery.of(context).size.height * 0.18,
-        width: MediaQuery.of(context).size.width * 0.10,
         fit: BoxFit.fill);
     //
     //Offline
     // return Image.memory(base64Decode(item.image),
-    //     height: MediaQuery.of(context).size.height * 0.10,
-    //     width: MediaQuery.of(context).size.width * 0.10,
     //     fit: BoxFit.fill);
   }
 

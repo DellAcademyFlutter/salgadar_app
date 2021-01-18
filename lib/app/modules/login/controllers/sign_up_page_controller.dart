@@ -19,18 +19,24 @@ class SignUpPageController implements Disposable {
   AutovalidateMode signUpIsValidating;
 
   /// Atribuicoes iniciais da [SignUpPage
-  initializeSignUpPage() {
-    usernameController.text = '';
-    passwordController.text = '';
-    password2Controller.text = '';
-    nameController..text = '';
-    birthdayController..text = '';
-    emailController..text = '';
+  initializeSignUpPage({@required User user}) {
+    if (user == null) {
+      usernameController.text = '';
+      passwordController.text = '';
+      password2Controller.text = '';
+      nameController..text = '';
+      birthdayController..text = '';
+      emailController..text = '';
+    } else {
+      usernameController.text = user.username;
+      passwordController.text = user.password;
+      password2Controller.text = user.password;
+      nameController..text = user.name;
+      birthdayController..text = user.birthday;
+      emailController.text = user.email;
+    }
     signUpIsValidating = AutovalidateMode.disabled;
   }
-
-  /// Muda o modo de [signUpIsValidating].
-  changeAutoValidateMode(AutovalidateMode mode) => signUpIsValidating = mode;
 
   /// Salva um [User] cadastrado.
   saveUser(
@@ -38,28 +44,29 @@ class SignUpPageController implements Disposable {
       String password,
       String name,
       String birthday,
-      String email}) async {
-    final user = User(
+      String email,
+      User user}) async {
+    final newUser = User(
+      id: user?.id,
       username: StringUtils.trimLowerCase(username),
       password: password,
       name: name,
       birthday: birthday,
       email: email,
     );
-    await userController.addUser(user);
-  }
 
-  /// Verifica se [User] ja esta cadastrado.
-  Future<bool> containsUser({String username}) async {
-    bool result = await userController.containsUser(username: username);
-    return result;
+    // Adicao ou edicao
+    (user == null)
+        ? await userController.addUser(newUser)
+        : await userController.updateUser(newUser);
   }
 
   /// Registra [User], retornando a flag de sucesso do processo.
-  Future<bool> registerUser({@required BuildContext context}) async {
-    changeAutoValidateMode(AutovalidateMode.always);
-    bool contains =
-        await userController.containsUser(username: usernameController.text);
+  Future<bool> registerUser(
+      {@required BuildContext context, @required User userEditing}) async {
+    signUpIsValidating = AutovalidateMode.always;
+    bool contains = await userController.containsUser(
+        username: usernameController.text, userEditing: userEditing);
     if (contains) {
       showAlertDialog(
           context: context,
@@ -74,6 +81,7 @@ class SignUpPageController implements Disposable {
           name: nameController.text,
           email: emailController.text,
           birthday: birthdayController.text,
+          user: userEditing,
         );
         return true;
       }
@@ -104,12 +112,6 @@ class SignUpPageController implements Disposable {
   validatorEmail({String email}) {
     final emailValidator = Validator.validateEmail(email);
     return !emailValidator ? 'Email inválido!' : null;
-  }
-
-  /// Verifica [User] ja cadastrado.
-  Future<bool> checksAlreadyRegisteredUser({String username}) async {
-    return await userController.containsUser(
-        username: StringUtils.trimLowerCase(username));
   }
 
   @override

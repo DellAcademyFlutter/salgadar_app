@@ -63,7 +63,7 @@ class _CartPageState extends State<CartPage> {
                               showAConfirmationDialog(
                                   context: context,
                                   title: 'Confirmação',
-                                  message: 'Deseja finalizar sua compra? =D',
+                                  message: 'Deseja finalizar sua compra?',
                                   yesFunction: homeController.yesFunction,
                                   noFunction: homeController.noFunction);
                             }

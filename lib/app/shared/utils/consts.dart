@@ -67,5 +67,6 @@ const PURCHASE_ID = 'id';
 const PURCHASE_USERID = 'userId';
 const PURCHASE_CARTID = 'cartId';
 const PURCHASE_TOTALVALUE = 'totalValue';
+const PURCHASE_TOTALQTT = 'totalQtt';
 const PURCHASE_DATE = 'date';
 const PURCHASE_ISDELETED = 'isDeleted';
