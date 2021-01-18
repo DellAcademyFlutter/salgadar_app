@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/data/api/purchase_api_dao.dart';
 import 'package:salgadar_app/app/data/local/purchase_SQLite_dao.dart';
-import 'package:salgadar_app/app/models/cart.dart';
 import 'package:salgadar_app/app/models/purchase.dart';
 import 'package:salgadar_app/app/models/user.dart';
 import 'package:salgadar_app/app/shared/utils/math_utils.dart';
@@ -19,10 +18,9 @@ class PurchaseController extends ChangeNotifier {
 
   /// Atribuicao inicial das [Purchases] de [User] logado.
   initializeUserPurchases() async {
-    userPurchases = userController.loggedUser == null
-        ? await purchaseAPIDao.getPurchase(
-            userId: userController.loggedUser.id,
-            cartId: cartController.userCart.id)
+    userPurchases = userController.loggedUser != null
+        ? await purchaseAPIDao.getUserPurchases(
+            userId: userController.loggedUser.id)
         : [];
   }
 
@@ -45,7 +43,6 @@ class PurchaseController extends ChangeNotifier {
     userPurchases.add(purchase);
     cartController.reinitializeCart();
     await cartController.cacheUserCurrCart();
-
 
     notifyListeners();
   }

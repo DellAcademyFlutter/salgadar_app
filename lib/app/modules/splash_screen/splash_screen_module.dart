@@ -19,5 +19,5 @@ class SplashScreenModule extends ChildModule {
       ];
 
   static Inject get to => Inject<SplashScreenModule>.of();
-  static const routeName = "/Splash";
+  static const routeName = Modular.initialRoute;
 }

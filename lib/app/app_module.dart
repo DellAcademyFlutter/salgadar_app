@@ -21,6 +21,7 @@ import 'data/api/user_api_dao.dart';
 import 'data/local/user_SQLite_dao.dart';
 import 'modules/home/home_module.dart';
 import 'modules/login/login_module.dart';
+import 'modules/user_purchase/user_purchase_module.dart';
 
 class AppModule extends MainModule {
   @override
@@ -58,5 +59,6 @@ class AppModule extends MainModule {
         ModularRouter(LoginModule.routeName, module: LoginModule()),
         ModularRouter(SettingsModule.routeName, module: SettingsModule()),
         ModularRouter(HomeModule.routeName, module: HomeModule()),
+        ModularRouter(UserPurchaseModule.routeName, module: UserPurchaseModule()),
       ];
 }

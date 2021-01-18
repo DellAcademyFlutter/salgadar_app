@@ -21,7 +21,7 @@ class Purchase {
   Purchase.fromJson({Map<String, dynamic> json}) {
     userId = json['userId'];
     cartId = json['cartId'];
-    totalValue = json['totalValue'];
+    totalValue = json['totalValue'].toDouble();
     date = json['date'];
     isDeleted = json['isDeleted'] == '1';
   }

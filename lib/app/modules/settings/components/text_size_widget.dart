@@ -49,10 +49,10 @@ class TextSizeSlider extends StatelessWidget {
                 trackHeight: 14,
                 trackShape: RoundedRectSliderTrackShape(),
                 tickMarkShape: RoundSliderTickMarkShape(),
-                activeTickMarkColor:
-                    Theme.of(context).floatingActionButtonTheme.backgroundColor,
-                inactiveTickMarkColor:
-                    Theme.of(context).floatingActionButtonTheme.backgroundColor,
+                activeTickMarkColor: Theme.of(context).buttonColor,
+                inactiveTickMarkColor: Theme.of(context).buttonColor,
+                thumbColor: Theme.of(context).buttonColor,
+                overlayColor: Theme.of(context).buttonColor.withOpacity(0.5),
               ),
               child: Slider(
                 value: settings.fontSize,
@@ -62,17 +62,20 @@ class TextSizeSlider extends StatelessWidget {
                 label:
                     "${MathUtils.round(number: settings.fontSize, decimalPlaces: 0)}",
                 onChanged: (newSliderValue) {
-                  settings.fontSize = newSliderValue;
+                  settings.changeFontSize(newFontSize: newSliderValue);
                 },
               ),
             ),
             RaisedButton(
               child: Text('Tamanho padrão'),
-              onPressed: settings.fontSize == settings.defaultFontSize
-                  ? null
-                  : () {
-                      settings.fontSize = settings.defaultFontSize;
-                    },
+              onPressed:
+                  settings.fontSize == UserSettingsController.DEFAULT_FONT_SIZE
+                      ? null
+                      : () {
+                          settings.changeFontSize(
+                              newFontSize:
+                                  UserSettingsController.DEFAULT_FONT_SIZE);
+                        },
             )
           ],
         ));

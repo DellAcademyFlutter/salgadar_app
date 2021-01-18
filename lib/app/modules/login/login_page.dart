@@ -93,10 +93,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                         onPressed: () async {
                           if (controller.formKey.currentState.validate()) {
                             await controller.login(
-                                username:
-                                    controller.nameController.text,
-                                password:
-                                    controller.passwordController.text,
+                                username: controller.nameController.text,
+                                password: controller.passwordController.text,
                                 context: context);
                           }
                         },
@@ -111,7 +109,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           Container(
             child: Center(
               child: FlatButton(
-                onPressed: () {
+                onPressed: () async {
+                  await controller.initializeHomePage();
                   Modular.link.pushNamed(SignUpPage.routeName);
                 },
                 child: Text('Não é cadastrado? Cadastre-se aqui!'),

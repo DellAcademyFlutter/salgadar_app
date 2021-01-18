@@ -58,16 +58,20 @@ class UserController extends ChangeNotifier {
   /// Salva o ultimo [User] logado em Local Storage.
   cacheLastLoggedUser({String username}) async {
     loggedUser = await userAPIDao.getUser(username: username);
-    SharedPrefs.save(
-        LOGGED_USER_LOCAL_STORAGE_KEY, jsonEncode(loggedUser.toJson()));
+
+    SharedPrefs.save(LOGGED_USER_LOCAL_STORAGE_KEY,
+        loggedUser != null ? jsonEncode(loggedUser.toJson()) : 'null');
   }
 
   /// Carrega o ultimo [User] logado em Local Storage.
   loadLastLoggedUser() async {
-    await SharedPrefs.contains(LOGGED_USER_LOCAL_STORAGE_KEY).then((value) async {
+    await SharedPrefs.contains(LOGGED_USER_LOCAL_STORAGE_KEY)
+        .then((value) async {
       if (value) {
         await SharedPrefs.read(LOGGED_USER_LOCAL_STORAGE_KEY).then((value) {
-          loggedUser = User.fromJson(json: jsonDecode(value));
+          loggedUser = value != 'null' && value != '0'
+              ? User.fromJson(json: jsonDecode(value))
+              : null;
         });
       } else {
         loggedUser = null;

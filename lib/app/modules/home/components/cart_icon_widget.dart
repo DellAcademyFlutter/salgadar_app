@@ -17,15 +17,18 @@ class _CartIconWidgetState extends State<CartIconWidget> {
     return FloatingActionButton(
         child: Consumer<CartController>(
           builder: (context, value) {
-            return Badge(
-              badgeColor: Theme.of(context).buttonColor,
-              badgeContent: Text('${controller.totalItems}'),
-              child: Icon(Icons.shopping_cart),
-              position: BadgePosition.topStart(
-                  start: MediaQuery.of(context).size.width * 0.03,
-                  top: MediaQuery.of(context).size.height * 0.03 * -1),
-              animationType: BadgeAnimationType.slide,
-            );
+            return controller.userCart != null
+                ? Badge(
+                    badgeColor: Theme.of(context).buttonColor,
+                    borderSide: BorderSide(width: 1),
+                    badgeContent: Text('${controller.totalItems}'),
+                    child: Icon(Icons.shopping_cart),
+                    position: BadgePosition.topStart(
+                        start: MediaQuery.of(context).size.width * 0.05,
+                        top: MediaQuery.of(context).size.height * 0.035 * -1),
+                    animationType: BadgeAnimationType.slide,
+                  )
+                : Center(child: CircularProgressIndicator());
           },
         ),
         onPressed: () => Modular.link.pushNamed(CartPage.routeName));

@@ -56,9 +56,11 @@ class _CartPageState extends State<CartPage> {
               ),
               ListTile(
                   title: RaisedButton(
-                child: Text("Finalizar compra!"),
-                onPressed: () async => await purchaseController.addPurchase(),
-              )),
+                      child: Text("Finalizar compra!"),
+                      onPressed: () async {
+                        await purchaseController.addPurchase();
+                        Modular.to.pop();
+                      })),
             ],
           );
         },

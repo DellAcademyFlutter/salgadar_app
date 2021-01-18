@@ -10,13 +10,15 @@ const CATEGORY_DRINK = 'drink';
 // Nomes das subcategorias
 const SUBCATEGORY_SAVORY = 'savory';
 const SUBCATEGORY_PIZZA = 'pizza';
-const SUBCATEGORY_HAMBURGER = 'hambrger';
+const SUBCATEGORY_HAMBURGER = 'hamburger';
 const SUBCATEGORY_JUICE = 'juice';
 const SUBCATEGORY_SMOOTHIE = 'smoothie';
 
 // Usuario logado e seu carrinho
 const LOGGED_USER_LOCAL_STORAGE_KEY = 'loggedUser';
 const CURR_CART = 'cart';
+const USER_THEME = 'theme';
+const USER_FONT_SIZE = 'fontSize';
 
 // Nomes das tabelas.
 const DATABASE_NAME = "salgadar.db";

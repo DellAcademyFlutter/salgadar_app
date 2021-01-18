@@ -40,6 +40,7 @@ class ThemeCollection {
       ),
       brightness: Brightness.light,
       cardColor: primaryColor[100],
+      buttonColor: primaryColor,
       buttonTheme: ButtonThemeData(
         buttonColor: primaryColor,
         shape: RoundedRectangleBorder(),
@@ -92,6 +93,7 @@ class ThemeCollection {
       ),
       brightness: Brightness.dark,
       cardColor: primaryDarkThemeColor,
+      buttonColor: secundaryDarkThemeColor,
       buttonTheme: ButtonThemeData(
         buttonColor: secundaryDarkThemeColor,
         shape: RoundedRectangleBorder(),
@@ -147,6 +149,7 @@ class ThemeCollection {
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor: secundaryHighContrastColor,
         ),
+        buttonColor: secundaryHighContrastColor,
         buttonTheme: ButtonThemeData(
           buttonColor: secundaryHighContrastColor,
           shape: RoundedRectangleBorder(),

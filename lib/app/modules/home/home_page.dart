@@ -1,11 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:salgadar_app/app/controllers/cart_controller.dart';
 import 'package:salgadar_app/app/controllers/item_controller.dart';
-import 'package:salgadar_app/app/models/item.dart';
+import 'package:salgadar_app/app/modules/home/pages/food_page.dart';
 
 import 'components/cart_icon_widget.dart';
-import 'components/item_widget.dart';
+import 'components/side_menu_widget.dart';
 import 'home_controller.dart';
+import 'pages/drink_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,6 +17,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
   final itemController = Modular.get<ItemController>();
+  final cartController = Modular.get<CartController>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,27 +31,25 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         title: Text('Menu'),
         centerTitle: true,
       ),
-      body: Consumer<ItemController>(
-        builder: (context, value) {
-          return GridView.count(
-            crossAxisCount: 2,
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-            mainAxisSpacing: 0,
-            crossAxisSpacing: 8,
-            children: itemController.items
-                .map<ItemWidget>(
-                    (Item item) => ItemWidget(key: UniqueKey(), item: item))
-                .toList(),
-          );
-        },
+      body: PageView(
+        controller: controller.pageViewController,
+        scrollDirection: Axis.horizontal,
+        children: [
+          FoodPage(),
+          DrinkPage(),
+        ],
       ),
+      drawer: SideMenuWidget(),
       floatingActionButton: CartIconWidget(),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
-      bottomNavigationBar: ValueListenableBuilder(
-        valueListenable: controller.selectedIndex,
-        builder: (context, value, child) {
+      bottomNavigationBar: AnimatedBuilder(
+        animation: controller.pageViewController,
+        builder: (context, snapshot) {
           return BottomNavigationBar(
+            currentIndex: controller.pageViewController?.page?.round() ?? 0,
+            selectedItemColor: Theme.of(context).primaryColor.withBlue(255),
+            onTap: (index) => controller.pageViewController.jumpToPage(index),
             items: [
               BottomNavigationBarItem(
                   icon: Icon(Icons.fastfood_outlined), label: 'comidas'),
@@ -51,9 +58,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                 label: 'bebidas',
               )
             ],
-            currentIndex: controller.selectedIndex.value,
-            selectedItemColor: Theme.of(context).primaryColor.withBlue(255),
-            onTap: (index) => controller.changeSelectedIndex(index),
           );
         },
       ),

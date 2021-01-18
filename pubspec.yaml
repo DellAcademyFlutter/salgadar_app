@@ -30,6 +30,7 @@ dependencies:
   flutter_stetho: ^0.5.2
   badges: ^1.1.6
   mask_text_input_formatter: ^1.1.0
+  flutter_slidable: ^0.5.7
   flutter:
     sdk: flutter
 

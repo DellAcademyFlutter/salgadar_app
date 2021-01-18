@@ -1,12 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:salgadar_app/app/controllers/cart_controller.dart';
+import 'package:salgadar_app/app/controllers/purchase_controller.dart';
 import 'package:salgadar_app/app/controllers/user_controller.dart';
+import 'package:salgadar_app/app/controllers/user_settings_controller.dart';
 import 'package:salgadar_app/app/modules/home/home_module.dart';
 import 'package:salgadar_app/app/shared/utils/alert_dialog_utils.dart';
 import 'package:salgadar_app/app/shared/utils/string_utils.dart';
 
 class LoginController implements Disposable {
   final userController = Modular.get<UserController>();
+  final cartController = Modular.get<CartController>();
+  final purchaseController = Modular.get<PurchaseController>();
+  final userSettingsController = Modular.get<UserSettingsController>();
+
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
   final hidePassword = ValueNotifier<bool>(true);
@@ -17,6 +24,11 @@ class LoginController implements Disposable {
     nameController.text = '';
     passwordController.text = '';
     hidePassword.value = true;
+  }
+
+  /// Inicializa o carrinho do [User] logado.
+  initializeHomePage() async{
+    await cartController.initializeCart();
   }
 
   /// Alterna entre true e false o valor de [hidePassword]
@@ -31,6 +43,10 @@ class LoginController implements Disposable {
         .then((value) async {
       if (value) {
         await userController.cacheLastLoggedUser(username: username);
+        await cartController.initializeCart();
+        await userSettingsController.initializeUserSettings();
+        await purchaseController.initializeUserPurchases();
+
         Modular.to.pushReplacementNamed(HomeModule.routeName);
       } else {
         showAlertDialog(

@@ -25,7 +25,6 @@ class CartController extends ChangeNotifier {
 
   /// Inicializa os [ItemCart] de [Cart].
   initializeCart() async {
-    userCart = Cart();
     await loadUserCurrCart();
   }
 
@@ -113,13 +112,12 @@ class CartController extends ChangeNotifier {
 
   /// Armazena o [Cart] atual de [User] logado em Local Storage.
   cacheUserCurrCart() async {
-    await SharedPrefs.save(getUserCurrCartKey(user: userController.loggedUser),
-        jsonEncode(userCart.toJson()));
+    await SharedPrefs.save(getUserCurrCartKey(), jsonEncode(userCart.toJson()));
   }
 
   /// Carrega o [Cart] atual de [User] logado.
   loadUserCurrCart() async {
-    final cartKey = getUserCurrCartKey(user: userController.loggedUser);
+    final cartKey = getUserCurrCartKey();
     await SharedPrefs.contains(cartKey).then((value) async {
       if (value) {
         await SharedPrefs.read(cartKey).then((value) {
@@ -134,8 +132,7 @@ class CartController extends ChangeNotifier {
   }
 
   /// Key para [Cart] atual de [User].
-  getUserCurrCartKey({User user}) =>
-      '$CURR_CART/${user == null ? -1 : user.id}';
+  getUserCurrCartKey() => '$CURR_CART/${userController?.loggedUser?.id ?? -1}';
 
   /// Calcula e retorna a quantidade de [Item]s de [Cart].
   getCartTotalItems() {
@@ -165,8 +162,9 @@ class CartController extends ChangeNotifier {
       id: null,
       items: <ItemCart>[],
     );
-    print(userCart.id);
     totalItems = 0;
     totalValue = 0;
+
+    notifyListeners();
   }
 }

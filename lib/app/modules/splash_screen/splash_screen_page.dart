@@ -5,7 +5,9 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/controllers/cart_controller.dart';
 import 'package:salgadar_app/app/controllers/item_controller.dart';
+import 'package:salgadar_app/app/controllers/purchase_controller.dart';
 import 'package:salgadar_app/app/controllers/user_controller.dart';
+import 'package:salgadar_app/app/controllers/user_settings_controller.dart';
 import 'package:salgadar_app/app/modules/home/home_module.dart';
 import 'package:salgadar_app/app/modules/login/login_module.dart';
 
@@ -29,15 +31,11 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Container(
-        alignment: Alignment.center,
         child: Container(
           child: Center(
             child: ListView(
               padding: const EdgeInsets.all(20.0),
               children: [
-                SizedBox(
-                  height: 20,
-                ),
                 Icon(
                   Icons.fastfood,
                   size: MediaQuery.of(context).size.width * 0.5,
@@ -62,15 +60,20 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     final itemController = Modular.get<ItemController>();
     final userController = Modular.get<UserController>();
     final cartController = Modular.get<CartController>();
-    //await PreconfigureSalgadar.initializeSalgadarItems();
+    final purchaseController = Modular.get<PurchaseController>();
+    final userSettingsController = Modular.get<UserSettingsController>();
+
+    // Inicializacoes
     await userController.loadLastLoggedUser();
     await itemController.initializeItems();
     await cartController.initializeCart();
+    await purchaseController.initializeUserPurchases();
+    await userSettingsController.initializeUserSettings();
 
-
-
-    userController.loggedUser != null
-        ? Modular.to.pushReplacementNamed(HomeModule.routeName)
-        : Modular.to.pushReplacementNamed(LoginModule.routeName);
+    if(userController.loggedUser != null) {
+      Modular.to.pushReplacementNamed(HomeModule.routeName);
+    }else{
+         Modular.to.pushReplacementNamed(LoginModule.routeName);
+    }
   }
 }

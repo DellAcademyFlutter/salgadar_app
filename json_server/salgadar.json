@@ -7,6 +7,22 @@
       "name": "1",
       "birthday": "01/01/1990",
       "email": "lee@lee.com"
+    },
+    {
+      "id": 2,
+      "username": "lin",
+      "password": "1",
+      "name": "1",
+      "birthday": "12/12/1990",
+      "email": "lin@lin.com"
+    },
+    {
+      "id": 3,
+      "username": "jacquin",
+      "password": "1",
+      "name": "Jacquin",
+      "birthday": "25/12/1990",
+      "email": "jacquin@chef.com"
     }
   ],
   "items": [
@@ -174,7 +190,227 @@
     }
   ],
   "carts": [
+    {
+      "id": 1,
+      "items": [
+        {
+          "itemId": 1,
+          "cartId": 1,
+          "qtt": 1,
+          "itemPrice": 3
+        },
+        {
+          "itemId": 2,
+          "cartId": 1,
+          "qtt": 1,
+          "itemPrice": 1
+        },
+        {
+          "itemId": 3,
+          "cartId": 1,
+          "qtt": 1,
+          "itemPrice": 0.5
+        },
+        {
+          "itemId": 4,
+          "cartId": 1,
+          "qtt": 1,
+          "itemPrice": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "items": [
+        {
+          "itemId": 3,
+          "cartId": 2,
+          "qtt": 1,
+          "itemPrice": 0.5
+        },
+        {
+          "itemId": 7,
+          "cartId": 2,
+          "qtt": 1,
+          "itemPrice": 17
+        },
+        {
+          "itemId": 8,
+          "cartId": 2,
+          "qtt": 1,
+          "itemPrice": 20
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "items": [
+        {
+          "itemId": 5,
+          "cartId": 3,
+          "qtt": 1,
+          "itemPrice": 18
+        },
+        {
+          "itemId": 6,
+          "cartId": 3,
+          "qtt": 1,
+          "itemPrice": 16
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "items": [
+        {
+          "itemId": 3,
+          "cartId": 4,
+          "qtt": 3,
+          "itemPrice": 0.5
+        },
+        {
+          "itemId": 4,
+          "cartId": 4,
+          "qtt": 2,
+          "itemPrice": 3
+        },
+        {
+          "itemId": 5,
+          "cartId": 4,
+          "qtt": 3,
+          "itemPrice": 18
+        },
+        {
+          "itemId": 2,
+          "cartId": 4,
+          "qtt": 2,
+          "itemPrice": 1
+        },
+        {
+          "itemId": 11,
+          "cartId": 4,
+          "qtt": 1,
+          "itemPrice": 5
+        },
+        {
+          "itemId": 10,
+          "cartId": 4,
+          "qtt": 2,
+          "itemPrice": 5
+        },
+        {
+          "itemId": 6,
+          "cartId": 4,
+          "qtt": 1,
+          "itemPrice": 16
+        },
+        {
+          "itemId": 1,
+          "cartId": 4,
+          "qtt": 1,
+          "itemPrice": 3
+        },
+        {
+          "itemId": 14,
+          "cartId": 4,
+          "qtt": 1,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 13,
+          "cartId": 4,
+          "qtt": 2,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 15,
+          "cartId": 4,
+          "qtt": 2,
+          "itemPrice": 2
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "items": [
+        {
+          "itemId": 2,
+          "cartId": 5,
+          "qtt": 2,
+          "itemPrice": 1
+        },
+        {
+          "itemId": 1,
+          "cartId": 5,
+          "qtt": 1,
+          "itemPrice": 3
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "items": [
+        {
+          "itemId": 2,
+          "cartId": 6,
+          "qtt": 2,
+          "itemPrice": 1
+        },
+        {
+          "itemId": 1,
+          "cartId": 6,
+          "qtt": 1,
+          "itemPrice": 3
+        },
+        {
+          "itemId": 3,
+          "cartId": 6,
+          "qtt": 2,
+          "itemPrice": 0.5
+        }
+      ]
+    }
   ],
   "purchases": [
+    {
+      "userId": 1,
+      "cartId": 1,
+      "totalValue": 7.5,
+      "date": "17/1/2021",
+      "isDeleted": 0,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "cartId": 2,
+      "totalValue": 37.5,
+      "date": "17/1/2021",
+      "isDeleted": 0,
+      "id": 2
+    },
+    {
+      "userId": 3,
+      "cartId": 3,
+      "totalValue": 34,
+      "date": "17/1/2021",
+      "isDeleted": 0,
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "cartId": 4,
+      "totalValue": 89,
+      "date": "17/1/2021",
+      "isDeleted": 0,
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "cartId": 6,
+      "totalValue": 5,
+      "date": "17/1/2021",
+      "isDeleted": 0,
+      "id": 5
+    }
   ]
 }

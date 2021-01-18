@@ -21,7 +21,7 @@ class PurchaseAPIDao {
   /// Put - atualiza um [Card].
   Future<Purchase> putPurchase(Purchase purchase) async {
     final response = await http.put(
-      '$URL_PURCHASE/${purchase.userId}&${purchase.cartId}',
+      '$URL_PURCHASE?$PURCHASE_USERID=${purchase.userId}&$PURCHASE_CARTID=${purchase.cartId}',
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -46,9 +46,9 @@ class PurchaseAPIDao {
 
       // Recupera apenas as que nao estao deletadas.
       final jsonResponseList = jsonResponse as List;
-      final purchases = [];
+      final purchases = <Purchase>[];
       for (var i = 0; i < jsonResponseList.length; i++) {
-        if (jsonResponseList[i][PURCHASE_ISDELETED] == '0') {
+        if (jsonResponseList[i][PURCHASE_ISDELETED] == 0) {
           purchases.add(Purchase.fromJson(json: jsonResponseList[i]));
         }
       }
@@ -81,6 +81,30 @@ class PurchaseAPIDao {
       return jsonDecode(response.body).toString() == '[]'
           ? null
           : Purchase.fromJson(json: jsonDecode(response.body));
+    } else {
+      throw Exception('Ocorreu uma falha no carregamento.');
+    }
+  }
+
+  /// Busca um [Purchase].
+  Future<List<Purchase>> getUserPurchases({int userId}) async {
+    final response = await http.get("$URL_PURCHASE?$PURCHASE_USERID=$userId");
+
+    // Caso sucesso
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(response.body);
+
+      // Recupera apenas as que nao estao deletadas.
+      final jsonResponseList = jsonResponse as List;
+      final purchases = <Purchase>[];
+      for (var i = 0; i < jsonResponseList.length; i++) {
+        if (jsonResponseList[i][PURCHASE_ISDELETED] == 0 &&
+            jsonResponseList[i][PURCHASE_USERID] == userId) {
+          purchases.add(Purchase.fromJson(json: jsonResponseList[i]));
+        }
+      }
+
+      return purchases;
     } else {
       throw Exception('Ocorreu uma falha no carregamento.');
     }
