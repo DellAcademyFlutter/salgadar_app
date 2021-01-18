@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:salgadar_app/app/controllers/item_controller.dart';
+import 'package:salgadar_app/app/controllers/purchase_controller.dart';
 import 'package:salgadar_app/app/controllers/user_controller.dart';
 import 'package:salgadar_app/app/controllers/user_settings_controller.dart';
 import 'package:salgadar_app/app/modules/login/login_module.dart';
@@ -8,6 +8,7 @@ import 'package:salgadar_app/app/modules/login/login_module.dart';
 class HomeController {
   final userController = Modular.get<UserController>();
   final userSettingsController = Modular.get<UserSettingsController>();
+  final purchaseController = Modular.get<PurchaseController>();
   final selectedIndex = ValueNotifier(0);
   final pageViewController = PageController();
 
@@ -27,5 +28,17 @@ class HomeController {
     userController.cacheLastLoggedUser(username: userController.loggedUser.username);
     userSettingsController.setDefaultSettings();
     Modular.to.pushReplacementNamed(LoginModule.routeName);
+  }
+
+  /// Funcao de confirmacao de compra.
+  yesFunction() async{
+    await purchaseController.addPurchase();
+    Modular.to.pop();
+    Modular.to.pop();
+  }
+
+  /// Funcao de cancelamento de compra.
+  noFunction() {
+    Modular.to.pop();
   }
 }

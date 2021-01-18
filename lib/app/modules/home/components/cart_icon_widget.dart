@@ -19,7 +19,7 @@ class _CartIconWidgetState extends State<CartIconWidget> {
           builder: (context, value) {
             return controller.userCart != null
                 ? Badge(
-                    badgeColor: Theme.of(context).buttonColor,
+                    badgeColor: Colors.redAccent,
                     borderSide: BorderSide(width: 1),
                     badgeContent: Text('${controller.totalItems}'),
                     child: Icon(Icons.shopping_cart),

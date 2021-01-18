@@ -76,10 +76,10 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                               trailing: IconButton(
                                 icon: Icon(Icons.remove_red_eye),
                                 color: controller.hidePassword.value
-                                    ? Theme.of(context)
+                                    ? null
+                                    : Theme.of(context)
                                         .buttonColor
-                                        .withBlue(255)
-                                    : null,
+                                        .withBlue(255),
                                 onPressed: () =>
                                     controller.toggleHidePassword(),
                               )));

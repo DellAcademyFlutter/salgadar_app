@@ -5,7 +5,7 @@ import 'package:salgadar_app/app/shared/utils/consts.dart';
 
 class PurchaseAPIDao {
   /// Post - adiciona um [Purchase].
-  Future<http.Response> postPurchase(Purchase purchase) async {
+  Future<int> postPurchase(Purchase purchase) async {
     final headers = <String, String>{
       'Content-type': 'application/json',
       'Accept': 'application/json',
@@ -14,14 +14,15 @@ class PurchaseAPIDao {
     final body = jsonEncode(purchase.toJson());
     final response =
         await http.post(URL_PURCHASE, body: body, headers: headers);
+    final jsonResponse = jsonDecode(response.body);
 
-    return response;
+    return jsonResponse[PURCHASE_ID];
   }
 
   /// Put - atualiza um [Card].
   Future<Purchase> putPurchase(Purchase purchase) async {
     final response = await http.put(
-      '$URL_PURCHASE?$PURCHASE_USERID=${purchase.userId}&$PURCHASE_CARTID=${purchase.cartId}',
+      '$URL_PURCHASE/${purchase.id}',
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -72,9 +73,8 @@ class PurchaseAPIDao {
   }
 
   /// Busca um [Purchase].
-  Future<Purchase> getPurchase({int userId, int cartId}) async {
-    final response = await http
-        .get("$URL_PURCHASE?$PURCHASE_USERID=$userId&$PURCHASE_CARTID=$cartId");
+  Future<Purchase> getPurchase({int id}) async {
+    final response = await http.get("$URL_PURCHASE?$PURCHASE_ID=$id");
 
     // Caso sucesso
     if (response.statusCode == 200) {
@@ -87,22 +87,19 @@ class PurchaseAPIDao {
   }
 
   /// Busca um [Purchase].
-  Future<List<Purchase>> getUserPurchases({int userId}) async {
-    final response = await http.get("$URL_PURCHASE?$PURCHASE_USERID=$userId");
+  Future<List<Purchase>> getUserPurchases({int userId, bool getDeleted}) async {
+    final url = "$URL_PURCHASE?$PURCHASE_USERID=$userId" +
+        (getDeleted ? '' : "&$PURCHASE_ISDELETED=0");
+    final response = await http.get(url);
 
     // Caso sucesso
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
 
       // Recupera apenas as que nao estao deletadas.
-      final jsonResponseList = jsonResponse as List;
-      final purchases = <Purchase>[];
-      for (var i = 0; i < jsonResponseList.length; i++) {
-        if (jsonResponseList[i][PURCHASE_ISDELETED] == 0 &&
-            jsonResponseList[i][PURCHASE_USERID] == userId) {
-          purchases.add(Purchase.fromJson(json: jsonResponseList[i]));
-        }
-      }
+      final purchases = (jsonResponse as List)
+          .map((data) => Purchase.fromJson(json: data))
+          .toList();
 
       return purchases;
     } else {
@@ -111,9 +108,8 @@ class PurchaseAPIDao {
   }
 
   /// Verifica se contem [Purchase].
-  Future<bool> contains({int userId, int cartId}) async {
-    final response = await http
-        .get("$URL_USER?$PURCHASE_USERID=$userId&$PURCHASE_CARTID=$cartId");
+  Future<bool> contains({int id}) async {
+    final response = await http.get("$URL_USER?$PURCHASE_ID=$id");
 
     // Caso sucesso
     if (response.statusCode == 200) {

@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/controllers/cart_controller.dart';
-import 'package:salgadar_app/app/controllers/purchase_controller.dart';
 import 'package:salgadar_app/app/controllers/user_controller.dart';
 import 'package:salgadar_app/app/modules/home/components/cart_item_widget.dart';
+import 'package:salgadar_app/app/shared/utils/alert_dialog_utils.dart';
 import 'package:salgadar_app/app/shared/utils/math_utils.dart';
+
+import '../home_controller.dart';
 
 class CartPage extends StatefulWidget {
   static const routeName = '/cartPage';
@@ -15,9 +17,8 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  final homeController = Modular.get<HomeController>();
   final cartController = Modular.get<CartController>();
-  final userCotroller = Modular.get<UserController>();
-  final purchaseController = Modular.get<PurchaseController>();
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +58,16 @@ class _CartPageState extends State<CartPage> {
               ListTile(
                   title: RaisedButton(
                       child: Text("Finalizar compra!"),
-                      onPressed: () async {
-                        await purchaseController.addPurchase();
-                        Modular.to.pop();
-                      })),
+                      onPressed: cartController.userCart.items.length > 0
+                          ? () async {
+                              showAConfirmationDialog(
+                                  context: context,
+                                  title: 'Confirmação',
+                                  message: 'Deseja finalizar sua compra? =D',
+                                  yesFunction: homeController.yesFunction,
+                                  noFunction: homeController.noFunction);
+                            }
+                          : null)),
             ],
           );
         },

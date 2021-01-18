@@ -63,6 +63,7 @@ const ITEM_CART_QTT = 'qtt';
 const ITEM_CART_ITEMPRICE = 'itemPrice';
 
 // Atributos de [TABLE_PURCHASE_NAME].
+const PURCHASE_ID = 'id';
 const PURCHASE_USERID = 'userId';
 const PURCHASE_CARTID = 'cartId';
 const PURCHASE_TOTALVALUE = 'totalValue';

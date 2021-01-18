@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:salgadar_app/app/controllers/purchase_controller.dart';
+import 'package:salgadar_app/app/modules/user_purchase/pages/detailed_purchase_page.dart';
 import 'package:salgadar_app/app/shared/utils/alert_dialog_utils.dart';
 import 'package:salgadar_app/app/shared/utils/math_utils.dart';
 
@@ -24,9 +25,14 @@ class _PurchaseWidgetState extends State<PurchaseWidget> {
       actionExtentRatio: 0.25,
       child: Card(
         child: ListTile(
+            onTap: () => Modular.link.pushNamed(DetailedPurchasePage.routeName,
+                arguments: DetailedPurchasePageArguments(
+                    purchase: purchaseController.userPurchases[widget.index],
+                    key: UniqueKey())),
             title: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Text('Salgadada ${widget.index}')),
+                child: Text(
+                    'Salgadada (#cod${purchaseController.userPurchases[widget.index].id})')),
             subtitle: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Text(
@@ -44,11 +50,13 @@ class _PurchaseWidgetState extends State<PurchaseWidget> {
           icon: Icons.delete,
           onTap: () async {
             showAConfirmationDialog(
-                context: context,
-                title: 'Atenção!',
-                message: 'Deseja remover Salgadada ${widget.index}?',
-                yesFunction: _yesFunction,
-                noFunction: _noFunction);
+              context: context,
+              title: 'Atenção!',
+              message:
+                  'Deseja remover Salgadada (#cod${purchaseController.userPurchases[widget.index].id})?',
+              yesFunction: _yesFunction,
+              noFunction: _noFunction,
+            );
           },
         ),
       ],
@@ -56,7 +64,7 @@ class _PurchaseWidgetState extends State<PurchaseWidget> {
   }
 
   /// Funcao de confirmacao.
-  _yesFunction() async{
+  _yesFunction() async {
     await purchaseController
         .removePurchase(purchaseController.userPurchases[widget.index]);
     Modular.to.pop();

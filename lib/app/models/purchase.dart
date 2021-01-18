@@ -2,15 +2,16 @@ import 'package:flutter/cupertino.dart';
 
 class Purchase {
   // Construtor da classe.
-  Purchase({
-    this.userId,
-    this.cartId,
-    this.totalValue,
-    this.date,
-    this.isDeleted
-  });
+  Purchase(
+      {this.id,
+      this.userId,
+      this.cartId,
+      this.totalValue,
+      this.date,
+      this.isDeleted});
 
   // Atributos da classe.
+  int id;
   int userId;
   int cartId;
   double totalValue;
@@ -19,6 +20,7 @@ class Purchase {
 
   // Construtor a partir de um json.
   Purchase.fromJson({Map<String, dynamic> json}) {
+    id = json['id'];
     userId = json['userId'];
     cartId = json['cartId'];
     totalValue = json['totalValue'].toDouble();
@@ -29,6 +31,7 @@ class Purchase {
   // Codifica este objeto em um map.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    json['id'] = id;
     json['userId'] = userId;
     json['cartId'] = cartId;
     json['totalValue'] = totalValue;
@@ -39,6 +42,7 @@ class Purchase {
 
   // Copia os valores de outro objeto, do mesmo tipo, para este objeto.
   setValues({@required Purchase otherPurchase}) {
+    id = otherPurchase.id;
     userId = otherPurchase.userId;
     cartId = otherPurchase.cartId;
     totalValue = otherPurchase.totalValue;

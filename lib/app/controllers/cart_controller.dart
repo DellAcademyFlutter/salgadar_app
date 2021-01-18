@@ -90,7 +90,19 @@ class CartController extends ChangeNotifier {
     return false;
   }
 
-  Future<int> saveCart() async {
+  /// Retorna um [Cart].
+  Future<Cart> getCart({int cartId}) async {
+    return await cartAPIDao.getCart(id: cartId);
+  }
+
+  /// Retorna um [Cart].
+  Future<List<ItemCart>> getItemsCart({int cartId}) async {
+    final cart = await cartAPIDao.getCart(id: cartId);
+    return cart.items;
+  }
+
+  /// Salva um [Cart].
+  saveCart() async {
     // TODO: IF HAS CONNECTION
     // Insere no server, resgatando id.
     await cartAPIDao.postCart(userCart).then((value) async {

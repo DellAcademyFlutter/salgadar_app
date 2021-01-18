@@ -20,7 +20,8 @@ class PurchaseController extends ChangeNotifier {
   initializeUserPurchases() async {
     userPurchases = userController.loggedUser != null
         ? await purchaseAPIDao.getUserPurchases(
-            userId: userController.loggedUser.id)
+            userId: userController.loggedUser.id,
+    getDeleted: false)
         : [];
   }
 
@@ -38,7 +39,7 @@ class PurchaseController extends ChangeNotifier {
       isDeleted: false,
     );
 
-    await purchaseAPIDao.postPurchase(purchase);
+    await purchaseAPIDao.postPurchase(purchase).then((value) => purchase.id = value);
     await purchaseSQLiteDao.insertPurchase(purchase);
     userPurchases.add(purchase);
     cartController.reinitializeCart();
