@@ -22,8 +22,6 @@ class PurchaseController extends ChangeNotifier {
     try {
       final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
 
-
-      print('ola');
       userPurchases = userController.loggedUser != null
           ? hasInternet
               ? await purchaseAPIDao.getUserPurchases(
@@ -31,9 +29,6 @@ class PurchaseController extends ChangeNotifier {
               : await purchaseSQLiteDao.getPurchasesByUser(
                   userId: userController.loggedUser.id)
           : [];
-      print(userController.loggedUser != null);
-      print(hasInternet);
-      print(userPurchases);
     } catch (e) {
       ConnectivityUtils.loadErrorMessage(context: context);
     }

@@ -72,9 +72,7 @@ class PurchaseSQLiteDao {
 
       final purchases = <Purchase>[];
 
-      print('oi------------------');
       for (var i = 0; i < maps.length; i++) {
-        print(maps[i]);
         if (maps[i][PURCHASE_USERID] == userId) {
           if (maps[i][PURCHASE_ISDELETED] == 0) {
             purchases.add(Purchase.fromJson(json: maps[i]));
