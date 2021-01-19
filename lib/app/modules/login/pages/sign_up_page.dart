@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/models/user.dart';
 import 'package:salgadar_app/app/modules/login/controllers/sign_up_page_controller.dart';
+import 'package:salgadar_app/app/shared/utils/focus_utils.dart';
 import 'package:salgadar_app/app/shared/utils/validator.dart';
 
 class SignUpPageArguments {
@@ -33,19 +34,49 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: widget.user == null
-          ? AppBar(
-              title: Text('Cadastro de usuário'),
-              centerTitle: true,
-            )
-          : null,
-      body: Form(
+    return ValueListenableBuilder(
+      valueListenable: controller.isActionSuccess,
+      builder: (context, value, child) {
+        return Scaffold(
+          appBar: widget.user == null
+              ? AppBar(
+            title: Text('Cadastro de usuário'),
+            centerTitle: true,
+          )
+              : null,
+          body: Stack(
+            alignment: AlignmentDirectional.center,
+            children: [
+              Positioned(
+                bottom: MediaQuery.of(context).size.height / 2,
+                child: AnimatedOpacity(
+                  curve: Curves.linear,
+                  opacity: controller.isActionSuccess.value ? 1 : 0,
+                  duration: Duration(milliseconds: 1000),
+                  child: animatedFeedbackWidget(),
+                ),
+              ),
+              AnimatedOpacity(
+                curve: Curves.bounceIn,
+                opacity: controller.isActionSuccess.value ? 0 : 1,
+                duration: Duration(milliseconds: 0),
+                child: formWidget(),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  /// Widget principal - Formulario.
+  formWidget() {
+    return Form(
         key: controller.formKey,
         autovalidateMode: controller.signUpIsValidating,
         child: ListView(
           padding: const EdgeInsets.all(8),
-          children: <Widget>[
+          children: [
             Container(
               child: TextFormField(
                 controller: controller.usernameController,
@@ -128,8 +159,13 @@ class _SignUpPageState extends State<SignUpPage> {
                       .registerUser(context: context, userEditing: widget.user)
                       .then((value) {
                     if (value) {
-                      Modular.to.pop();
-                      // TODO: ANIMATION
+                      // Remove o foco do textEdit, para realizar dismiss no keyboard.
+                      FocusUtils.removeFocus(context: context);
+
+                      // Fecha a pagina depois de alguns milisegundos.
+                      Future.delayed(Duration(milliseconds: 1500), () {
+                        Modular.to.pop();
+                      });
                     }
                   });
                 },
@@ -137,6 +173,25 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ],
         ),
+      );
+  }
+
+  /// Widget de feedback animado.
+  animatedFeedbackWidget() {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Icon(
+            Icons.done_outline,
+            color: Colors.green,
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Text(widget.user == null
+                ? ' Cadastro realizado com sucesso!'
+                : ' Modificações realizadas com sucesso!'),
+          )
+        ],
       ),
     );
   }

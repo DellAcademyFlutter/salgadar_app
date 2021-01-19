@@ -35,8 +35,8 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
                 ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child:
-                      Center(child: Text('${userController.loggedUser.name}!')),
+                  child: Center(
+                      child: Text('${userController.loggedUser?.name ?? ''}!')),
                 ),
               ],
             ),

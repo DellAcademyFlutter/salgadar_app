@@ -49,7 +49,6 @@ class LoginController implements Disposable {
               username: username, context: context);
           await cartController.initializeCart();
           await userSettingsController.initializeUserSettings();
-          await purchaseController.initializeUserPurchases(context: context);
 
           Modular.to.pushReplacementNamed(HomeModule.routeName);
         } else {

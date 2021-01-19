@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:salgadar_app/app/controllers/purchase_controller.dart';
+import 'package:salgadar_app/app/models/purchase.dart';
 import 'package:salgadar_app/app/modules/user_purchase/pages/detailed_purchase_page.dart';
 import 'package:salgadar_app/app/shared/utils/alert_dialog_utils.dart';
 import 'package:salgadar_app/app/shared/utils/connectivity_utils.dart';
 import 'package:salgadar_app/app/shared/utils/math_utils.dart';
 
 class PurchaseWidget extends StatefulWidget {
-  const PurchaseWidget({Key key, this.index}) : super(key: key);
+  const PurchaseWidget({Key key, this.purchase}) : super(key: key);
 
-  final int index;
+  final Purchase purchase;
 
   @override
   _PurchaseWidgetState createState() => _PurchaseWidgetState();
@@ -28,20 +29,17 @@ class _PurchaseWidgetState extends State<PurchaseWidget> {
         child: ListTile(
             onTap: () => Modular.link.pushNamed(DetailedPurchasePage.routeName,
                 arguments: DetailedPurchasePageArguments(
-                    purchase: purchaseController.userPurchases[widget.index],
-                    key: UniqueKey())),
+                    purchase: widget.purchase, key: UniqueKey())),
             title: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Text(
-                    'Salgadada (#cod${purchaseController.userPurchases[widget.index].id})')),
+                child: Text('Salgadada (#cod${widget.purchase.id})')),
             subtitle: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Text(
-                    'Data: ${purchaseController.userPurchases[widget.index].date}')),
+                child: Text('Data: ${widget.purchase.date}')),
             trailing: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Text(
-                  'R\$: ${MathUtils.round(number: purchaseController.userPurchases[widget.index].totalValue, decimalPlaces: 2)}'),
+                  'R\$: ${MathUtils.round(number: widget.purchase.totalValue, decimalPlaces: 2)}'),
             )),
       ),
       actions: <Widget>[
@@ -69,8 +67,7 @@ class _PurchaseWidgetState extends State<PurchaseWidget> {
       showAConfirmationDialog(
         context: context,
         title: 'Atenção!',
-        message:
-            'Deseja remover Salgadada (#cod${purchaseController.userPurchases[widget.index].id})?',
+        message: 'Deseja remover Salgadada (#cod${widget.purchase.id})?',
         yesFunction: yesFunction,
         noFunction: noFunction,
       );
@@ -82,8 +79,7 @@ class _PurchaseWidgetState extends State<PurchaseWidget> {
 
   /// Funcao de confirmacao.
   yesFunction() async {
-    await purchaseController
-        .removePurchase(purchaseController.userPurchases[widget.index]);
+    await purchaseController.removePurchase(widget.purchase);
     Modular.to.pop();
   }
 

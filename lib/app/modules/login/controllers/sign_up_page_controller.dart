@@ -17,6 +17,7 @@ class SignUpPageController implements Disposable {
   final birthdayController = TextEditingController();
   final emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  final isActionSuccess = ValueNotifier(false);
 
   AutovalidateMode signUpIsValidating;
 
@@ -38,6 +39,7 @@ class SignUpPageController implements Disposable {
       emailController.text = user.email;
     }
     signUpIsValidating = AutovalidateMode.disabled;
+    isActionSuccess.value = false;
   }
 
   /// Salva um [User] cadastrado.
@@ -47,7 +49,8 @@ class SignUpPageController implements Disposable {
       String name,
       String birthday,
       String email,
-      User user}) async {
+      User user,
+      BuildContext context}) async {
     final newUser = User(
       id: user?.id,
       username: StringUtils.trimLowerCase(username),
@@ -58,9 +61,15 @@ class SignUpPageController implements Disposable {
     );
 
     // Adicao ou edicao
-    (user == null)
-        ? await userController.addUser(newUser)
-        : await userController.updateUser(newUser);
+    if (user == null) {
+      await userController.addUser(newUser);
+    } else {
+      await userController.updateUser(newUser);
+      await userController.cacheLastLoggedUser(
+          username: newUser.username, context: context);
+    }
+
+    isActionSuccess.value = true;
   }
 
   /// Registra [User], retornando a flag de sucesso do processo.
@@ -86,13 +95,13 @@ class SignUpPageController implements Disposable {
       } else {
         if (formKey.currentState.validate()) {
           await saveUser(
-            username: usernameController.text,
-            password: passwordController.text,
-            name: nameController.text,
-            email: emailController.text,
-            birthday: birthdayController.text,
-            user: userEditing,
-          );
+              username: usernameController.text,
+              password: passwordController.text,
+              name: nameController.text,
+              email: emailController.text,
+              birthday: birthdayController.text,
+              user: userEditing,
+              context: context);
           return true;
         }
       }

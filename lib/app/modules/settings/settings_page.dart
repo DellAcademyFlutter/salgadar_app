@@ -22,8 +22,11 @@ class _SettingsPageState
         title: AnimatedBuilder(
             animation: controller.pageViewController,
             builder: (context, snapshot) {
-              return Text('Configurações' +
-                  '${controller.pageViewController.page == controller.pageViewController.initialPage ? ' de sistema' : ' de usuário'}');
+              return SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Text('Configurações' +
+                    '${controller.pageViewController.page == controller.pageViewController.initialPage ? ' de sistema' : ' de usuário'}'),
+              );
             }),
         centerTitle: true,
       ),

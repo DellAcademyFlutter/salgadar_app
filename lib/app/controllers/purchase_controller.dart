@@ -15,24 +15,6 @@ class PurchaseController extends ChangeNotifier {
   final userController = Modular.get<UserController>();
   final purchaseAPIDao = Modular.get<PurchaseAPIDao>();
   final purchaseSQLiteDao = Modular.get<PurchaseSQLiteDao>();
-  List<Purchase> userPurchases = [];
-
-  /// Atribuicao inicial das [Purchases] de [User] logado.
-  initializeUserPurchases({BuildContext context}) async {
-    try {
-      final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
-
-      userPurchases = userController.loggedUser != null
-          ? hasInternet
-              ? await purchaseAPIDao.getUserPurchases(
-                  userId: userController.loggedUser.id, getDeleted: false)
-              : await purchaseSQLiteDao.getPurchasesByUser(
-                  userId: userController.loggedUser.id)
-          : [];
-    } catch (e) {
-      ConnectivityUtils.loadErrorMessage(context: context);
-    }
-  }
 
   /// Adiciona uma [Purchase].
   addPurchase() async {
@@ -53,7 +35,6 @@ class PurchaseController extends ChangeNotifier {
         .postPurchase(purchase)
         .then((value) => purchase.id = value);
     await purchaseSQLiteDao.insertPurchase(purchase);
-    userPurchases.add(purchase);
     cartController.reinitializeCart();
     await cartController.cacheUserCurrCart();
 
@@ -66,9 +47,23 @@ class PurchaseController extends ChangeNotifier {
 
     await purchaseAPIDao.putPurchase(purchase);
     await purchaseSQLiteDao.updatePurchase(purchase);
-    userPurchases.remove(purchase);
 
     notifyListeners();
+  }
+
+  /// Retorna uma lista de [Purchase]s de [User].
+  Future<List<Purchase>> getUserPurchases({int userId, BuildContext context}) async {
+    try {
+      final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
+
+      return hasInternet
+          ? await purchaseAPIDao.getUserPurchases(
+              userId: userId, getDeleted: false)
+          : await purchaseSQLiteDao.getPurchasesByUser(userId: userId);
+    } catch (e) {
+      ConnectivityUtils.loadErrorMessage(context: context);
+      return null;
+    }
   }
 
   /// Retorna a data de hoje no formato dd-mm-yyyy

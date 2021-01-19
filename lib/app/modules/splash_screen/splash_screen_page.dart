@@ -68,13 +68,12 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     // Inicializacoes
     final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
     if (hasInternet) {
-      await PreconfigureSalgadar.cacheAllInSQLite();
-      //await PreconfigureSalgadar.cacheItemsInSQLite();
+      //await PreconfigureSalgadar.cacheAllInSQLite();
+      await PreconfigureSalgadar.cacheItemsInSQLite();
     }
     await userController.loadLastLoggedUser();
     await itemController.initializeItems(context: context);
     await cartController.initializeCart();
-    await purchaseController.initializeUserPurchases(context: context);
     await userSettingsController.initializeUserSettings();
 
     if (userController.loggedUser != null) {

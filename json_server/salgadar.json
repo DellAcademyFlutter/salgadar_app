@@ -7,6 +7,38 @@
       "name": "Lee",
       "birthday": "01/02/1990",
       "email": "lee@lee.com"
+    },
+    {
+      "id": 2,
+      "username": "fogaca",
+      "password": "123",
+      "name": "Henrique Fogaca",
+      "birthday": "12/12/1990",
+      "email": "fogaca@1.com"
+    },
+    {
+      "id": 3,
+      "username": "paola",
+      "password": "123",
+      "name": "Paola carosela",
+      "birthday": "01/02/1999",
+      "email": "paola@2.com"
+    },
+    {
+      "id": 4,
+      "username": "null",
+      "password": "123",
+      "name": "123",
+      "birthday": "01/01/1990",
+      "email": "1@1.com"
+    },
+    {
+      "id": 5,
+      "username": "null5",
+      "password": "1",
+      "name": "1",
+      "birthday": "01/01/1990",
+      "email": "1@1.com"
     }
   ],
   "items": [
@@ -399,6 +431,404 @@
           "itemPrice": 7.5
         }
       ]
+    },
+    {
+      "id": 9,
+      "items": [
+        {
+          "itemId": 1,
+          "cartId": 9,
+          "qtt": 4,
+          "itemPrice": 3
+        },
+        {
+          "itemId": 2,
+          "cartId": 9,
+          "qtt": 3,
+          "itemPrice": 1
+        },
+        {
+          "itemId": 6,
+          "cartId": 9,
+          "qtt": 2,
+          "itemPrice": 16
+        },
+        {
+          "itemId": 11,
+          "cartId": 9,
+          "qtt": 2,
+          "itemPrice": 5
+        },
+        {
+          "itemId": 12,
+          "cartId": 9,
+          "qtt": 1,
+          "itemPrice": 7.5
+        },
+        {
+          "itemId": 10,
+          "cartId": 9,
+          "qtt": 1,
+          "itemPrice": 5
+        },
+        {
+          "itemId": 3,
+          "cartId": 9,
+          "qtt": 1,
+          "itemPrice": 0.5
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "items": [
+        {
+          "itemId": 1,
+          "cartId": 10,
+          "qtt": 3,
+          "itemPrice": 3
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "items": [
+        {
+          "itemId": 3,
+          "cartId": 11,
+          "qtt": 1,
+          "itemPrice": 0.5
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "items": [
+        {
+          "itemId": 3,
+          "cartId": 12,
+          "qtt": 1,
+          "itemPrice": 0.5
+        },
+        {
+          "itemId": 4,
+          "cartId": 12,
+          "qtt": 1,
+          "itemPrice": 3
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "items": [
+        {
+          "itemId": 1,
+          "cartId": 13,
+          "qtt": 1,
+          "itemPrice": 3
+        },
+        {
+          "itemId": 2,
+          "cartId": 13,
+          "qtt": 1,
+          "itemPrice": 1
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "items": [
+        {
+          "itemId": 3,
+          "cartId": 14,
+          "qtt": 2,
+          "itemPrice": 0.5
+        },
+        {
+          "itemId": 4,
+          "cartId": 14,
+          "qtt": 1,
+          "itemPrice": 3
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "items": [
+        {
+          "itemId": 1,
+          "cartId": 15,
+          "qtt": 1,
+          "itemPrice": 3
+        },
+        {
+          "itemId": 5,
+          "cartId": 15,
+          "qtt": 2,
+          "itemPrice": 18
+        },
+        {
+          "itemId": 6,
+          "cartId": 15,
+          "qtt": 1,
+          "itemPrice": 16
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "items": [
+        {
+          "itemId": 8,
+          "cartId": 16,
+          "qtt": 1,
+          "itemPrice": 20
+        },
+        {
+          "itemId": 14,
+          "cartId": 16,
+          "qtt": 1,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 13,
+          "cartId": 16,
+          "qtt": 2,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 15,
+          "cartId": 16,
+          "qtt": 1,
+          "itemPrice": 2
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "items": [
+        {
+          "itemId": 15,
+          "cartId": 17,
+          "qtt": 1,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 14,
+          "cartId": 17,
+          "qtt": 1,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 17,
+          "cartId": 17,
+          "qtt": 1,
+          "itemPrice": 3.5
+        },
+        {
+          "itemId": 16,
+          "cartId": 17,
+          "qtt": 2,
+          "itemPrice": 4.5
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "items": [
+        {
+          "itemId": 3,
+          "cartId": 18,
+          "qtt": 1,
+          "itemPrice": 0.5
+        },
+        {
+          "itemId": 1,
+          "cartId": 18,
+          "qtt": 1,
+          "itemPrice": 3
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "items": [
+        {
+          "itemId": 11,
+          "cartId": 19,
+          "qtt": 1,
+          "itemPrice": 5
+        },
+        {
+          "itemId": 10,
+          "cartId": 19,
+          "qtt": 2,
+          "itemPrice": 5
+        },
+        {
+          "itemId": 12,
+          "cartId": 19,
+          "qtt": 1,
+          "itemPrice": 7.5
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "items": [
+        {
+          "itemId": 14,
+          "cartId": 20,
+          "qtt": 2,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 13,
+          "cartId": 20,
+          "qtt": 2,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 16,
+          "cartId": 20,
+          "qtt": 2,
+          "itemPrice": 4.5
+        },
+        {
+          "itemId": 17,
+          "cartId": 20,
+          "qtt": 1,
+          "itemPrice": 3.5
+        },
+        {
+          "itemId": 18,
+          "cartId": 20,
+          "qtt": 1,
+          "itemPrice": 3.5
+        },
+        {
+          "itemId": 19,
+          "cartId": 20,
+          "qtt": 1,
+          "itemPrice": 4
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "items": [
+        {
+          "itemId": 19,
+          "cartId": 21,
+          "qtt": 1,
+          "itemPrice": 4
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "items": [
+        {
+          "itemId": 15,
+          "cartId": 22,
+          "qtt": 12,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 13,
+          "cartId": 22,
+          "qtt": 4,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 14,
+          "cartId": 22,
+          "qtt": 3,
+          "itemPrice": 2
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "items": [
+        {
+          "itemId": 15,
+          "cartId": 23,
+          "qtt": 2,
+          "itemPrice": 2
+        },
+        {
+          "itemId": 14,
+          "cartId": 23,
+          "qtt": 1,
+          "itemPrice": 2
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "items": [
+        {
+          "itemId": 2,
+          "cartId": 24,
+          "qtt": 1,
+          "itemPrice": 1
+        },
+        {
+          "itemId": 1,
+          "cartId": 24,
+          "qtt": 1,
+          "itemPrice": 3
+        },
+        {
+          "itemId": 3,
+          "cartId": 24,
+          "qtt": 1,
+          "itemPrice": 0.5
+        },
+        {
+          "itemId": 4,
+          "cartId": 24,
+          "qtt": 1,
+          "itemPrice": 3
+        },
+        {
+          "itemId": 11,
+          "cartId": 24,
+          "qtt": 1,
+          "itemPrice": 5
+        },
+        {
+          "itemId": 10,
+          "cartId": 24,
+          "qtt": 2,
+          "itemPrice": 5
+        },
+        {
+          "itemId": 12,
+          "cartId": 24,
+          "qtt": 2,
+          "itemPrice": 7.5
+        },
+        {
+          "itemId": 5,
+          "cartId": 24,
+          "qtt": 1,
+          "itemPrice": 18
+        },
+        {
+          "itemId": 6,
+          "cartId": 24,
+          "qtt": 1,
+          "itemPrice": 16
+        },
+        {
+          "itemId": 8,
+          "cartId": 24,
+          "qtt": 1,
+          "itemPrice": 20
+        }
+      ]
     }
   ],
   "purchases": [
@@ -473,6 +903,150 @@
       "totalQtt": 9,
       "date": "19/1/2021",
       "isDeleted": 0
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "cartId": 9,
+      "totalValue": 38,
+      "totalQtt": 14,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "cartId": 10,
+      "totalValue": 9,
+      "totalQtt": 3,
+      "date": "19/1/2021",
+      "isDeleted": 1
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "cartId": 11,
+      "totalValue": 0.5,
+      "totalQtt": 1,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "cartId": 12,
+      "totalValue": 3.5,
+      "totalQtt": 2,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 13,
+      "userId": 1,
+      "cartId": 13,
+      "totalValue": 4,
+      "totalQtt": 2,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 14,
+      "userId": 1,
+      "cartId": 14,
+      "totalValue": 4,
+      "totalQtt": 3,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 15,
+      "userId": 1,
+      "cartId": 15,
+      "totalValue": 55,
+      "totalQtt": 4,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 16,
+      "userId": 1,
+      "cartId": 16,
+      "totalValue": 28,
+      "totalQtt": 5,
+      "date": "19/1/2021",
+      "isDeleted": 1
+    },
+    {
+      "id": 17,
+      "userId": 1,
+      "cartId": 17,
+      "totalValue": 16.5,
+      "totalQtt": 5,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 18,
+      "userId": 1,
+      "cartId": 18,
+      "totalValue": 3.5,
+      "totalQtt": 2,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 19,
+      "userId": 1,
+      "cartId": 19,
+      "totalValue": 22.5,
+      "totalQtt": 4,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 20,
+      "userId": 1,
+      "cartId": 20,
+      "totalValue": 28,
+      "totalQtt": 9,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 21,
+      "userId": 1,
+      "cartId": 21,
+      "totalValue": 4,
+      "totalQtt": 1,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 22,
+      "userId": 1,
+      "cartId": 22,
+      "totalValue": 38,
+      "totalQtt": 19,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 23,
+      "userId": 1,
+      "cartId": 23,
+      "totalValue": 6,
+      "totalQtt": 3,
+      "date": "19/1/2021",
+      "isDeleted": 0
+    },
+    {
+      "id": 24,
+      "userId": 2,
+      "cartId": 24,
+      "totalValue": 79,
+      "totalQtt": 12,
+      "date": "19/1/2021",
+      "isDeleted": 1
     }
   ]
 }

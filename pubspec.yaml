@@ -32,6 +32,8 @@ dependencies:
   badges: ^1.1.6
   mask_text_input_formatter: ^1.1.0
   flutter_slidable: ^0.5.7
+  flutter_local_notifications: ^3.0.2
+  rxdart: ^0.24.0
   flutter:
     sdk: flutter
 

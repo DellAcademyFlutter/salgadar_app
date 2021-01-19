@@ -5,26 +5,73 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_modular/flutter_modular_test.dart';
+import 'package:flutter_stetho/flutter_stetho.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:salgadar_app/app/app_module.dart';
+import 'package:salgadar_app/app/controllers/cart_controller.dart';
+import 'package:salgadar_app/app/models/item.dart';
 
-import 'package:salgadar_app/main.dart';
+void main() async {
+  await Stetho.initialize();
+  initModule(AppModule());
 
-void main() {
-  // testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-  //   // Build our app and trigger a frame.
-  //   await tester.pumpWidget(MyApp());
-  //
-  //   // Verify that our counter starts at 0.
-  //   expect(find.text('0'), findsOneWidget);
-  //   expect(find.text('1'), findsNothing);
-  //
-  //   // Tap the '+' icon and trigger a frame.
-  //   await tester.tap(find.byIcon(Icons.add));
-  //   await tester.pump();
-  //
-  //   // Verify that our counter has incremented.
-  //   expect(find.text('0'), findsNothing);
-  //   expect(find.text('1'), findsOneWidget);
-  // });
+  /// Teste para verificacao do preço total do carrinho
+  test('Teste de inicializacao do carrinho', () {
+    final cartController = Modular.get<CartController>();
+
+    cartController.reinitializeCart();
+    expect(cartController.userCart.items.length, 0);
+  });
+
+  /// Teste para verificacao do preço total do carrinho
+  test('Teste de quantidade de items do carrinho', () async {
+    final cartController = Modular.get<CartController>();
+
+    cartController.reinitializeCart();
+
+    final item1 = Item(
+        id: 0,
+        category: 'food',
+        name: 'risole',
+        price: 10.50,
+        description: 'Um risole de carne moída',
+        image: 'image',
+        subCategory: 'savory');
+
+    await cartController.addItem(item1);
+    await cartController.addItem(item1);
+
+    expect(cartController.totalItems, 2);
+  });
+
+  test('Teste do preço do carrinho', () async {
+    final cartController = Modular.get<CartController>();
+
+    cartController.reinitializeCart();
+
+    final item1 = Item(
+        id: 0,
+        category: 'food',
+        name: 'risole',
+        price: 10.50,
+        description: 'Um risole de carne moída',
+        image: 'image',
+        subCategory: 'savory');
+
+    final item2 = Item(
+        id: 1,
+        category: 'drink',
+        name: 'suco de laranja',
+        price: 0.50,
+        description: 'Um sjuco de laranja doce e gelado',
+        image: 'image',
+        subCategory: 'juice');
+
+    await cartController.addItem(item1);
+    await cartController.addItem(item2);
+
+    expect(cartController.totalValue, 11.00);
+  });
 }
