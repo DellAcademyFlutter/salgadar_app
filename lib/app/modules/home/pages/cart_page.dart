@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/controllers/cart_controller.dart';
-import 'package:salgadar_app/app/controllers/user_controller.dart';
 import 'package:salgadar_app/app/modules/home/components/cart_item_widget.dart';
 import 'package:salgadar_app/app/shared/utils/alert_dialog_utils.dart';
+import 'package:salgadar_app/app/shared/utils/connectivity_utils.dart';
 import 'package:salgadar_app/app/shared/utils/math_utils.dart';
 
 import '../home_controller.dart';
@@ -60,12 +60,8 @@ class _CartPageState extends State<CartPage> {
                       child: Text("Finalizar compra!"),
                       onPressed: cartController.userCart.items.length > 0
                           ? () async {
-                              showAConfirmationDialog(
-                                  context: context,
-                                  title: 'Confirmação',
-                                  message: 'Deseja finalizar sua compra?',
-                                  yesFunction: homeController.yesFunction,
-                                  noFunction: homeController.noFunction);
+                              await homeController.finalizePurchase(
+                                  context: context);
                             }
                           : null)),
             ],

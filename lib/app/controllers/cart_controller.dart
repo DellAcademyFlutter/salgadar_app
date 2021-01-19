@@ -11,6 +11,7 @@ import 'package:salgadar_app/app/models/item.dart';
 import 'package:salgadar_app/app/models/item_cart.dart';
 import 'package:salgadar_app/app/models/user.dart';
 import 'package:salgadar_app/app/repositories/local/database/shared_prefs.dart';
+import 'package:salgadar_app/app/shared/utils/connectivity_utils.dart';
 import 'package:salgadar_app/app/shared/utils/consts.dart';
 
 class CartController extends ChangeNotifier {
@@ -97,7 +98,16 @@ class CartController extends ChangeNotifier {
 
   /// Retorna um [Cart].
   Future<List<ItemCart>> getItemsCart({int cartId}) async {
-    final cart = await cartAPIDao.getCart(id: cartId);
+    final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
+
+    Cart cart;
+    if (hasInternet) {
+      cart = await cartAPIDao.getCart(id: cartId);
+    } else {
+      cart = await cartSQLiteDao.getCart(cartId: cartId);
+      cart.items = await itemCartSQLiteDao.getItemCartsByCart(cartId);
+    }
+
     return cart.items;
   }
 

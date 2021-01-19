@@ -61,4 +61,18 @@ class UserSQLiteDao {
       return <User>[];
     }
   }
+
+  /// Retorna um [User].
+  Future<User> getUser({String username}) async {
+    final db = await DBHelper.getDatabase();
+    final maps = await db.query(
+      TABLE_USER_NAME,
+      where: "$USER_USERNAME = ?",
+      whereArgs: [username],
+    );
+    if (maps.length > 0) {
+      return User.fromJson(json: maps.first);
+    }
+    return null;
+  }
 }

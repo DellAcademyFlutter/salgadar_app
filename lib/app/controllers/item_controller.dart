@@ -7,7 +7,8 @@ import 'package:salgadar_app/app/data/api/item_api_dao.dart';
 import 'package:salgadar_app/app/data/local/item_SQLite_dao.dart';
 import 'package:salgadar_app/app/models/item.dart';
 import 'package:http/http.dart' as http;
-import 'package:salgadar_app/app/shared/utils/consts.dart';
+
+import '../shared/utils/connectivity_utils.dart';
 
 class ItemController extends ChangeNotifier {
   List<Item> items = [];
@@ -46,11 +47,19 @@ class ItemController extends ChangeNotifier {
   }
 
   /// Inicializa com todos [Item]s.
-  initializeItems() async {
-    await itemAPIDao.getItems().then((value) => items = value);
-    //await itemSQLiteDao.getItems().then((value) => items = value); pelo SQLite
+  initializeItems({BuildContext context}) async {
+    try {
+      // Verificacao de internet
+      final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
 
-    notifyListeners();
+      hasInternet
+          ? await itemAPIDao.getItems().then((value) => items = value)
+          : await itemSQLiteDao.getItems().then((value) => items = value);
+
+      notifyListeners();
+    } catch (e) {
+      ConnectivityUtils.loadErrorMessage(context: context);
+    }
   }
 
   /// Retorna o index de um [Item] dado seu [id].
@@ -73,28 +82,55 @@ class ItemController extends ChangeNotifier {
     return null;
   }
 
-  /// Retorna os items por categoria.
-  Future<List<Item>> getItemsByCategory({String category}) async {
-    List<Item> result = await itemAPIDao.getItemsByCategory(category: category);
-    return result;
-  }
-
   /// Retorna os items por subCategoria.
-  Future<List<Item>> getItemsBySubCategory({String subCategory}) async {
-    List<Item> result =
-        await itemAPIDao.getItemsBySubCategory(subCategory: subCategory);
-    return result;
+  Future<List<Item>> getItemsBySubCategory(
+      {String subCategory, BuildContext context}) async {
+    try {
+      final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
+
+      List<Item> result = hasInternet
+          ? await itemAPIDao.getItemsBySubCategory(subCategory: subCategory)
+          : await itemSQLiteDao.getItemsBySubcategory(subcategory: subCategory);
+
+      return result;
+    } catch (e) {
+      ConnectivityUtils.loadErrorMessage(context: context);
+    }
   }
 
   /// Retorna o widget imagem do item.
-  getItemImage({Item item, BuildContext context}) {
-    // Online
-    return Image.network(item.image,
-        fit: BoxFit.fill);
-    //
-    //Offline
-    // return Image.memory(base64Decode(item.image),
-    //     fit: BoxFit.fill);
+  getItemImage({Item item, BuildContext context}) async {
+    final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
+
+    return hasInternet
+        ? Image.network(
+            item.image,
+            fit: BoxFit.fill,
+          )
+        : Image.memory(base64Decode(item.image), fit: BoxFit.fill);
+  }
+
+  /// Retorna o widget imagem do item, dado seu id.
+  getItemThumbnailImage({int itemId, BuildContext context}) async {
+    final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
+
+    final item = hasInternet
+        ? await itemAPIDao.getItem(id: itemId)
+        : await itemSQLiteDao.getItem(id: itemId);
+
+    if (item == null){
+      return null;
+    }
+
+    return hasInternet
+        ? Image.network(
+            item.image,
+            fit: BoxFit.fill,
+          )
+        : Image.memory(
+            base64Decode(item.image),
+            fit: BoxFit.fill,
+          );
   }
 
   /// Converte uma imagem em URL para Base64.

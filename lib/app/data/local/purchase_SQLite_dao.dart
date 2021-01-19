@@ -65,14 +65,16 @@ class PurchaseSQLiteDao {
   }
 
   /// Retorna a lista de todos os [Purchase]s filtrados por [User].
-  Future<List<Purchase>> getPurchasesByUser(int userId) async {
+  Future<List<Purchase>> getPurchasesByUser({int userId}) async {
     try {
       final db = await DBHelper.getDatabase();
       final maps = await db.query(TABLE_PURCHASE_NAME);
 
       final purchases = <Purchase>[];
 
+      print('oi------------------');
       for (var i = 0; i < maps.length; i++) {
+        print(maps[i]);
         if (maps[i][PURCHASE_USERID] == userId) {
           if (maps[i][PURCHASE_ISDELETED] == 0) {
             purchases.add(Purchase.fromJson(json: maps[i]));

@@ -29,7 +29,7 @@ showAlertDialog(
 
 /// Confirmation Dialog.
 showAConfirmationDialog({BuildContext context, String title, String message,
-    Function yesFunction, Function noFunction}) {
+  Function yesFunction, Function noFunction}) {
   showDialog(
     context: context,
     builder: (BuildContext context) {

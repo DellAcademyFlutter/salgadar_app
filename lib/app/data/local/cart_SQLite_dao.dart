@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:salgadar_app/app/data/local/item_cart_SQLite_dao.dart';
 import 'package:salgadar_app/app/models/cart.dart';
 import 'package:salgadar_app/app/repositories/local/database/dbHelper.dart';
 import 'package:salgadar_app/app/shared/utils/consts.dart';
@@ -60,5 +63,20 @@ class CartSQLiteDao {
       //print(ex);
       return <Cart>[];
     }
+  }
+
+  /// Retorna um [Cart].
+  Future<Cart> getCart({int cartId}) async {
+    final itemCartSQLiteDao = Modular.get<ItemCartSQLiteDao>();
+    final db = await DBHelper.getDatabase();
+    List<Map<String, dynamic>> maps = await db.query(
+      TABLE_CART_NAME,
+      where: "$CART_ID = ?",
+      whereArgs: [cartId],
+    );
+    if (maps.length > 0) {
+      return Cart.fromMap(map: maps.first);
+    }
+    return null;
   }
 }

@@ -8,10 +8,12 @@ import 'package:salgadar_app/app/models/user.dart';
 import 'package:salgadar_app/app/repositories/local/database/shared_prefs.dart';
 import 'package:salgadar_app/app/shared/utils/consts.dart';
 import 'package:salgadar_app/app/shared/utils/string_utils.dart';
+import 'file:///C:/Users/Jack/AndroidStudioProjects/salgadar_app/lib/app/shared/utils/connectivity_utils.dart';
 
 class UserController extends ChangeNotifier {
   final userAPIDao = Modular.get<UserAPIDao>();
   final userSQLiteDao = Modular.get<UserSQLiteDao>();
+
   User loggedUser;
 
   /// Adiciona um [User].
@@ -54,20 +56,37 @@ class UserController extends ChangeNotifier {
   }
 
   /// Verifica as credenciais de um [User].
-  Future<bool> isUserCredentials({String username, String password}) async {
-    final user = await userAPIDao.getUser(username: username);
-    if (user == null) {
-      return false;
+  Future<bool> isUserCredentials(
+      {String username, String password, BuildContext context}) async {
+    try {
+      final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
+
+      final user = (hasInternet)
+          ? await userAPIDao.getUser(username: username)
+          : await userSQLiteDao.getUser(username: username);
+      if (user == null) {
+        return false;
+      }
+      return user?.password == password;
+    } catch (e) {
+      ConnectivityUtils.loadErrorMessage(context: context);
     }
-    return user?.password == password;
   }
 
   /// Salva o ultimo [User] logado em Local Storage.
-  cacheLastLoggedUser({String username}) async {
-    loggedUser = await userAPIDao.getUser(username: username);
+  cacheLastLoggedUser({String username, BuildContext context}) async {
+    try {
+      final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
 
-    SharedPrefs.save(LOGGED_USER_LOCAL_STORAGE_KEY,
-        loggedUser != null ? jsonEncode(loggedUser.toJson()) : 'null');
+      loggedUser = hasInternet
+          ? await userAPIDao.getUser(username: username)
+          : await userSQLiteDao.getUser(username: username);
+
+      SharedPrefs.save(LOGGED_USER_LOCAL_STORAGE_KEY,
+          loggedUser != null ? jsonEncode(loggedUser.toJson()) : 'null');
+    } catch (e) {
+      ConnectivityUtils.loadErrorMessage(context: context);
+    }
   }
 
   /// Carrega o ultimo [User] logado em Local Storage.

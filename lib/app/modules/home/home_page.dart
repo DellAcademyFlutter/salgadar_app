@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/controllers/cart_controller.dart';
+import 'file:///C:/Users/Jack/AndroidStudioProjects/salgadar_app/lib/app/shared/utils/connectivity_utils.dart';
 import 'package:salgadar_app/app/controllers/item_controller.dart';
 import 'package:salgadar_app/app/modules/home/pages/food_page.dart';
 

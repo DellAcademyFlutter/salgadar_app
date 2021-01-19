@@ -61,4 +61,42 @@ class ItemSQLiteDao {
       return <Item>[];
     }
   }
+
+  /// Retorna um [Item].
+  Future<Item> getItem({int id}) async {
+    try {
+      final db = await DBHelper.getDatabase();
+      final maps = await db.query(TABLE_ITEM_NAME);
+
+      for (var i = 0; i < maps.length; i++) {
+        if (maps[i][ITEM_ID] == id) {
+          return Item.fromJson(json: maps[i]);
+        }
+      }
+      return null;
+    } catch (ex) {
+      //print(ex);
+      return null;
+    }
+  }
+
+  /// Retorna a lista de todos os [Item]s por subcategoria.
+  Future<List<Item>> getItemsBySubcategory({String subcategory}) async {
+    try {
+      final db = await DBHelper.getDatabase();
+      final maps = await db.query(TABLE_ITEM_NAME);
+
+      final items = <Item>[];
+
+      for (var i = 0; i < maps.length; i++) {
+        if (maps[i][ITEM_SUBCATEGORY] == subcategory) {
+          items.add(Item.fromJson(json: maps[i]));
+        }
+      }
+      return items;
+    } catch (ex) {
+      //print(ex);
+      return <Item>[];
+    }
+  }
 }

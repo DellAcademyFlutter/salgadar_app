@@ -23,7 +23,7 @@ class _SettingsPageState
             animation: controller.pageViewController,
             builder: (context, snapshot) {
               return Text('Configurações' +
-                  '${controller.pageViewController.page == controller.pageViewController.initialPage ? ' de usuário' : ' de sistema'}');
+                  '${controller.pageViewController.page == controller.pageViewController.initialPage ? ' de sistema' : ' de usuário'}');
             }),
         centerTitle: true,
       ),
@@ -44,11 +44,11 @@ class _SettingsPageState
             onTap: (index) => controller.pageViewController.jumpToPage(index),
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: 'Usuário'),
-              BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
                 label: 'Sistema',
-              )
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person), label: 'Usuário'),
             ],
           );
         },

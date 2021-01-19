@@ -24,15 +24,6 @@ class DetailedPurchasePage extends StatefulWidget {
 
 class _DetailedPurchasePageState extends State<DetailedPurchasePage> {
   final cartController = Modular.get<CartController>();
-  final purchaseItems = ValueNotifier<List<ItemCart>>([]);
-
-  @override
-  void initState() {
-    super.initState();
-    cartController
-        .getItemsCart(cartId: widget.purchase.cartId)
-        .then((value) => purchaseItems.value = value);
-  }
 
   @override
   Widget build(BuildContext context) {

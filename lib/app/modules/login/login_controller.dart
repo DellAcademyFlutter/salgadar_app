@@ -6,6 +6,7 @@ import 'package:salgadar_app/app/controllers/user_controller.dart';
 import 'package:salgadar_app/app/controllers/user_settings_controller.dart';
 import 'package:salgadar_app/app/modules/home/home_module.dart';
 import 'package:salgadar_app/app/shared/utils/alert_dialog_utils.dart';
+import 'package:salgadar_app/app/shared/utils/connectivity_utils.dart';
 import 'package:salgadar_app/app/shared/utils/string_utils.dart';
 
 class LoginController implements Disposable {
@@ -27,7 +28,7 @@ class LoginController implements Disposable {
   }
 
   /// Inicializa o carrinho do [User] logado.
-  initializeHomePage() async{
+  initializeHomePage() async {
     await cartController.initializeCart();
   }
 
@@ -36,26 +37,33 @@ class LoginController implements Disposable {
 
   /// Verifica o login do [User]
   login({String username, String password, BuildContext context}) async {
-    username = StringUtils.trimLowerCase(username);
+    try {
+      username = StringUtils.trimLowerCase(username);
 
-    await userController
-        .isUserCredentials(username: username, password: password)
-        .then((value) async {
-      if (value) {
-        await userController.cacheLastLoggedUser(username: username);
-        await cartController.initializeCart();
-        await userSettingsController.initializeUserSettings();
-        await purchaseController.initializeUserPurchases();
+      await userController
+          .isUserCredentials(
+              username: username, password: password, context: context)
+          .then((value) async {
+        if (value) {
+          await userController.cacheLastLoggedUser(
+              username: username, context: context);
+          await cartController.initializeCart();
+          await userSettingsController.initializeUserSettings();
+          await purchaseController.initializeUserPurchases(context: context);
 
-        Modular.to.pushReplacementNamed(HomeModule.routeName);
-      } else {
-        showAlertDialog(
-            context: context,
-            title: 'Atenção!',
-            message: 'Usuario ou senha incorretos',
-            buttonConfirmationLabel: 'Ok');
-      }
-    });
+          Modular.to.pushReplacementNamed(HomeModule.routeName);
+        } else {
+          showAlertDialog(
+              context: context,
+              title: 'Atenção!',
+              message: 'Usuario ou senha incorretos',
+              buttonConfirmationLabel: 'Ok');
+        }
+      });
+    } catch (e) {
+      ConnectivityUtils.loadErrorMessage(
+          context: context); // mensagem alert dialog
+    }
   }
 
   @override

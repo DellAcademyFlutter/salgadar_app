@@ -4,6 +4,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:salgadar_app/app/controllers/purchase_controller.dart';
 import 'package:salgadar_app/app/modules/user_purchase/pages/detailed_purchase_page.dart';
 import 'package:salgadar_app/app/shared/utils/alert_dialog_utils.dart';
+import 'package:salgadar_app/app/shared/utils/connectivity_utils.dart';
 import 'package:salgadar_app/app/shared/utils/math_utils.dart';
 
 class PurchaseWidget extends StatefulWidget {
@@ -49,29 +50,45 @@ class _PurchaseWidgetState extends State<PurchaseWidget> {
           color: Colors.red,
           icon: Icons.delete,
           onTap: () async {
-            showAConfirmationDialog(
-              context: context,
-              title: 'Atenção!',
-              message:
-                  'Deseja remover Salgadada (#cod${purchaseController.userPurchases[widget.index].id})?',
-              yesFunction: _yesFunction,
-              noFunction: _noFunction,
-            );
+            await _confirmateDelete(context: context);
           },
         ),
       ],
     );
   }
 
+  _confirmateDelete({BuildContext context}) async {
+    try {
+      // Verificacao de internet
+      final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
+      if (!hasInternet) {
+        ConnectivityUtils.noConnectionMessage(context: context);
+        return;
+      }
+
+      showAConfirmationDialog(
+        context: context,
+        title: 'Atenção!',
+        message:
+            'Deseja remover Salgadada (#cod${purchaseController.userPurchases[widget.index].id})?',
+        yesFunction: yesFunction,
+        noFunction: noFunction,
+      );
+    } catch (e) {
+      ConnectivityUtils.loadErrorMessage(
+          context: context); // mensagem alert dialog
+    }
+  }
+
   /// Funcao de confirmacao.
-  _yesFunction() async {
+  yesFunction() async {
     await purchaseController
         .removePurchase(purchaseController.userPurchases[widget.index]);
     Modular.to.pop();
   }
 
   /// Funcao de cancelamento.
-  _noFunction() {
+  noFunction() {
     Modular.to.pop();
   }
 }

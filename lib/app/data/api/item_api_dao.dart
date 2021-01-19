@@ -66,8 +66,8 @@ class ItemAPIDao {
   }
 
   /// Busca um [Item].
-  Future<Item> getItem({id}) async {
-    final response = await http.get("$URL_ITEM?$ITEM_ID=$id");
+  Future<Item> getItem({int id}) async {
+    final response = await http.get("$URL_ITEM/$id");
 
     // Caso sucesso
     if (response.statusCode == 200) {

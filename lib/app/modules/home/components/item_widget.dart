@@ -29,8 +29,13 @@ class _ItemWidgetState extends State<ItemWidget> {
           children: [
             Container(
               height: MediaQuery.of(context).size.height * 0.175,
-              child: itemController.getItemImage(
-                  item: widget.item, context: context),
+              child: FutureBuilder(
+                future: itemController.getItemImage(
+                    context: context, item: widget.item),
+                builder: (context, snapshot) => snapshot.hasData
+                    ? snapshot.data
+                    : Center(child: CircularProgressIndicator()),
+              ),
             ),
             Expanded(
               child: ListView(

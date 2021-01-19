@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/controllers/cart_controller.dart';
+import 'file:///C:/Users/Jack/AndroidStudioProjects/salgadar_app/lib/app/shared/utils/connectivity_utils.dart';
 import 'package:salgadar_app/app/controllers/item_controller.dart';
 import 'package:salgadar_app/app/controllers/purchase_controller.dart';
 import 'package:salgadar_app/app/controllers/user_controller.dart';
 import 'package:salgadar_app/app/controllers/user_settings_controller.dart';
 import 'package:salgadar_app/app/modules/home/home_module.dart';
 import 'package:salgadar_app/app/modules/login/login_module.dart';
+import 'package:salgadar_app/app/shared/utils/preconfigure_salgadar.dart';
 
 class SplashScreenPage extends StatefulWidget {
   @override
@@ -64,16 +66,21 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     final userSettingsController = Modular.get<UserSettingsController>();
 
     // Inicializacoes
+    final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
+    if (hasInternet) {
+      await PreconfigureSalgadar.cacheAllInSQLite();
+      //await PreconfigureSalgadar.cacheItemsInSQLite();
+    }
     await userController.loadLastLoggedUser();
-    await itemController.initializeItems();
+    await itemController.initializeItems(context: context);
     await cartController.initializeCart();
-    await purchaseController.initializeUserPurchases();
+    await purchaseController.initializeUserPurchases(context: context);
     await userSettingsController.initializeUserSettings();
 
-    if(userController.loggedUser != null) {
+    if (userController.loggedUser != null) {
       Modular.to.pushReplacementNamed(HomeModule.routeName);
-    }else{
-         Modular.to.pushReplacementNamed(LoginModule.routeName);
+    } else {
+      Modular.to.pushReplacementNamed(LoginModule.routeName);
     }
   }
 }

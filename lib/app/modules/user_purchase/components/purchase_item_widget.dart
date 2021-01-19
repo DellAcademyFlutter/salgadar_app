@@ -29,7 +29,7 @@ class _PurchaseItemWidgetState extends State<PurchaseItemWidget> {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: itemController.getItemImage(context: context, item: item),
+        leading: Icon(Icons.food_bank),
         subtitle: Text('${widget.itemCart.qtt} x R\$ ${item.price}'),
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,

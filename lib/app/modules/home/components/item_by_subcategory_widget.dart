@@ -21,8 +21,8 @@ class _ItemBySubCateboryWidgetState extends State<ItemBySubCateboryWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future:
-          itemController.getItemsBySubCategory(subCategory: widget.subcategory),
+      future: itemController.getItemsBySubCategory(
+          subCategory: widget.subcategory, context: context),
       builder: (context, snapshot) {
         return snapshot.data != null
             ? GridView.count(

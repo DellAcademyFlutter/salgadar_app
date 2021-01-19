@@ -7,6 +7,7 @@ import 'package:salgadar_app/app/models/user.dart';
 import 'package:salgadar_app/app/shared/utils/math_utils.dart';
 
 import 'cart_controller.dart';
+import '../shared/utils/connectivity_utils.dart';
 import 'user_controller.dart';
 
 class PurchaseController extends ChangeNotifier {
@@ -17,11 +18,25 @@ class PurchaseController extends ChangeNotifier {
   List<Purchase> userPurchases = [];
 
   /// Atribuicao inicial das [Purchases] de [User] logado.
-  initializeUserPurchases() async {
-    userPurchases = userController.loggedUser != null
-        ? await purchaseAPIDao.getUserPurchases(
-            userId: userController.loggedUser.id, getDeleted: false)
-        : [];
+  initializeUserPurchases({BuildContext context}) async {
+    try {
+      final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
+
+
+      print('ola');
+      userPurchases = userController.loggedUser != null
+          ? hasInternet
+              ? await purchaseAPIDao.getUserPurchases(
+                  userId: userController.loggedUser.id, getDeleted: false)
+              : await purchaseSQLiteDao.getPurchasesByUser(
+                  userId: userController.loggedUser.id)
+          : [];
+      print(userController.loggedUser != null);
+      print(hasInternet);
+      print(userPurchases);
+    } catch (e) {
+      ConnectivityUtils.loadErrorMessage(context: context);
+    }
   }
 
   /// Adiciona uma [Purchase].

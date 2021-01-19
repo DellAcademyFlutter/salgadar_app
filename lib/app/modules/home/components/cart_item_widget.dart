@@ -30,7 +30,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: itemController.getItemImage(context: context, item: item),
+        leading: Icon(Icons.food_bank),
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Text(
@@ -44,8 +44,7 @@ class _CartItemWidgetState extends State<CartItemWidget> {
               color: Colors.green,
               onPressed: () async => cartController.addItem(item),
             ),
-            Text(
-                'x${cartController.userCart.items[widget.index].qtt}'),
+            Text('x${cartController.userCart.items[widget.index].qtt}'),
             IconButton(
               icon: Icon(Icons.remove),
               color: Colors.red,

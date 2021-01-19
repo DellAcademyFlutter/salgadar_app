@@ -57,7 +57,7 @@ class DBHelper {
       "FOREIGN KEY($PURCHASE_CARTID) REFERENCES $TABLE_CART_NAME($CART_ID)"
       ")";
 
-  // Execucao dos scripts na inicializacao do banco.
+  /// Execucao dos scripts na inicializacao do banco.
   static Future<Database> getDatabase() async {
     return openDatabase(
       join(await getDatabasesPath(), DATABASE_NAME),
@@ -71,4 +71,42 @@ class DBHelper {
       version: 1,
     );
   }
+
+  /// Reinicia todas as tabelas do banco.
+  static Future<void> reinitializeTables() async {
+    try {
+      final db = await getDatabase();
+      // Drop
+      await db.execute("DROP TABLE IF EXISTS $TABLE_ITEM_NAME");
+      await db.execute("DROP TABLE IF EXISTS $TABLE_USER_NAME");
+      await db.execute("DROP TABLE IF EXISTS $TABLE_ITEM_CART_NAME");
+      await db.execute("DROP TABLE IF EXISTS $TABLE_CART_NAME");
+      await db.execute("DROP TABLE IF EXISTS $TABLE_PURCHASE_NAME");
+
+      // Create
+      await db.execute(SCRIPT_CREATE_TABLE_USER_SQL);
+      await db.execute(SCRIPT_CREATE_TABLE_ITEM_SQL);
+      await db.execute(SCRIPT_CREATE_TABLE_CART_SQL);
+      await db.execute(SCRIPT_CREATE_TABLE_ITEM_CART_SQL);
+      await db.execute(SCRIPT_CREATE_TABLE_PURCHASE_SQL);
+    } catch (ex) {
+      print("DBEXCEPTION: $ex");
+    }
+  }
+
+  /// Reinicia uma tabela do banco.
+  static Future<void> reinitializeTable({String tableName, String scriptCreateTable}) async {
+    try {
+      final db = await getDatabase();
+      // Drop
+      await db.execute("DROP TABLE IF EXISTS $tableName");
+
+      // Create
+      await db.execute(scriptCreateTable);
+    } catch (ex) {
+      print("DBEXCEPTION: $ex");
+    }
+  }
+
+
 }
