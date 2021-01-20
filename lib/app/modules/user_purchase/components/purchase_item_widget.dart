@@ -33,7 +33,7 @@ class _PurchaseItemWidgetState extends State<PurchaseItemWidget> {
         subtitle: Text('${widget.itemCart.qtt} x R\$ ${item.price}'),
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Text('${item.name}'),
+          child: Text(item.name),
         ),
         trailing: SingleChildScrollView(
           scrollDirection: Axis.horizontal,

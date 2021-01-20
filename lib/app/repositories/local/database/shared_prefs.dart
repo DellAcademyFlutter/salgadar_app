@@ -4,7 +4,7 @@ class SharedPrefs {
   /// Salva {key: value} em Local Storage.
   static Future save(String key, String value) async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setString(key, value);
+    await prefs.setString(key, value);
   }
 
   /// Busca por key em Local Storage.
@@ -22,7 +22,7 @@ class SharedPrefs {
   /// Remove key em Local Storage.
   static Future remove(String key) async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.remove(key);
+    await prefs.remove(key);
   }
 
   /// Busca todas keys em Local Storage.
@@ -34,6 +34,6 @@ class SharedPrefs {
   /// Deleta todas key em Local Storage.
   static Future removeAll() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.clear();
+    await prefs.clear();
   }
 }

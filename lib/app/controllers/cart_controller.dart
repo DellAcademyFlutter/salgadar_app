@@ -93,7 +93,7 @@ class CartController extends ChangeNotifier {
 
   /// Retorna um [Cart].
   Future<Cart> getCart({int cartId}) async {
-    return await cartAPIDao.getCart(id: cartId);
+    return cartAPIDao.getCart(id: cartId);
   }
 
   /// Retorna um [Cart].
@@ -124,7 +124,7 @@ class CartController extends ChangeNotifier {
     await cartAPIDao.putCart(userCart);
 
     // Insere no banco, resgatando relacional.
-    Map<String, dynamic> cartMap = userCart.toJson();
+    final cartMap = userCart.toJson();
     cartMap.remove(CART_ITEMS);
     await cartSQLiteDao.insertCart(cartMap: cartMap);
     for (var i = 0; i < userCart.items.length; i++) {
@@ -158,7 +158,7 @@ class CartController extends ChangeNotifier {
 
   /// Calcula e retorna a quantidade de [Item]s de [Cart].
   getCartTotalItems() {
-    int sum = 0;
+    var sum = 0;
 
     for (var i = 0; i < userCart.items.length; i++) {
       sum += userCart.items[i].qtt;
@@ -169,7 +169,7 @@ class CartController extends ChangeNotifier {
 
   /// Calcula e retorna o valor total de [Item]s de [Cart].
   getCartTotalValue() {
-    double sum = 0.0;
+    var sum = 0.0;
 
     for (var i = 0; i < userCart.items.length; i++) {
       sum += userCart.items[i].itemPrice;

@@ -43,7 +43,7 @@ class _ItemWidgetState extends State<ItemWidget> {
                   SingleChildScrollView(
                       padding: myTextPadding(),
                       scrollDirection: Axis.horizontal,
-                      child: Text('${widget.item.name}')),
+                      child: Text(widget.item.name)),
                   SingleChildScrollView(
                       padding: myTextPadding(),
                       scrollDirection: Axis.horizontal,

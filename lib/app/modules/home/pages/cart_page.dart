@@ -93,7 +93,7 @@ class _CartPageState extends State<CartPage> {
             ListTile(
                 title: RaisedButton(
                     child: Text("Finalizar compra!"),
-                    onPressed: cartController.userCart.items.length > 0
+                    onPressed: cartController.userCart.items.isNotEmpty
                         ? () async {
                             await homeController.finalizePurchase(
                                 context: context);

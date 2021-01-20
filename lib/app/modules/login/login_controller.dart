@@ -50,7 +50,7 @@ class LoginController implements Disposable {
           await cartController.initializeCart();
           await userSettingsController.initializeUserSettings();
 
-          Modular.to.pushReplacementNamed(HomeModule.routeName);
+          await Modular.to.pushReplacementNamed(HomeModule.routeName);
         } else {
           showAlertDialog(
               context: context,

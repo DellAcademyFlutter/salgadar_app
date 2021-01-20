@@ -8,7 +8,7 @@ import 'package:salgadar_app/app/models/user.dart';
 import 'package:salgadar_app/app/repositories/local/database/shared_prefs.dart';
 import 'package:salgadar_app/app/shared/utils/consts.dart';
 import 'package:salgadar_app/app/shared/utils/string_utils.dart';
-import 'file:///C:/Users/Jack/AndroidStudioProjects/salgadar_app/lib/app/shared/utils/connectivity_utils.dart';
+import 'package:salgadar_app/app/shared/utils/connectivity_utils.dart';
 
 class UserController extends ChangeNotifier {
   final userAPIDao = Modular.get<UserAPIDao>();
@@ -82,7 +82,7 @@ class UserController extends ChangeNotifier {
           ? await userAPIDao.getUser(username: username)
           : await userSQLiteDao.getUser(username: username);
 
-      SharedPrefs.save(LOGGED_USER_LOCAL_STORAGE_KEY,
+      await SharedPrefs.save(LOGGED_USER_LOCAL_STORAGE_KEY,
           loggedUser != null ? jsonEncode(loggedUser.toJson()) : 'null');
     } catch (e) {
       ConnectivityUtils.loadErrorMessage(context: context);

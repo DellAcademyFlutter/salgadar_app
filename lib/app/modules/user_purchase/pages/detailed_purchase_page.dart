@@ -51,7 +51,7 @@ class _DetailedPurchasePageState extends State<DetailedPurchasePage> {
             ),
             trailing: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Text('${widget.purchase.date}'),
+              child: Text(widget.purchase.date),
             ),
           ),
           ListTile(

@@ -14,7 +14,6 @@ import 'package:salgadar_app/app/modules/splash_screen/splash_screen_module.dart
 import 'app_controller.dart';
 import 'app_widget.dart';
 import 'controllers/cart_controller.dart';
-import 'shared/utils/connectivity_utils.dart';
 import 'controllers/item_controller.dart';
 import 'controllers/purchase_controller.dart';
 import 'controllers/user_controller.dart';

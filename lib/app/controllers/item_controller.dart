@@ -18,7 +18,7 @@ class ItemController extends ChangeNotifier {
   /// Adiciona um [Item].
   addItem(Item item) async {
     await itemAPIDao.postItem(item);
-    String base64Image = await imageUrlTobase64(item.image);
+    final String base64Image = await imageUrlTobase64(item.image);
     item.image = base64Image;
     await itemSQLiteDao.insertItem(item);
     items.add(item);
@@ -29,7 +29,7 @@ class ItemController extends ChangeNotifier {
   /// Atualiza um [Item].
   updateItem(Item item) async {
     await itemAPIDao.putItem(item);
-    String base64Image = await imageUrlTobase64(item.image);
+    final String base64Image = await imageUrlTobase64(item.image);
     item.image = base64Image;
     await itemSQLiteDao.updateItem(item);
     items[getItemIndexById(item.id)].setValues(otherItem: item);
@@ -88,7 +88,7 @@ class ItemController extends ChangeNotifier {
     try {
       final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
 
-      List<Item> result = hasInternet
+      final result = hasInternet
           ? await itemAPIDao.getItemsBySubCategory(subCategory: subCategory)
           : await itemSQLiteDao.getItemsBySubcategory(subcategory: subCategory);
 
@@ -118,7 +118,7 @@ class ItemController extends ChangeNotifier {
         ? await itemAPIDao.getItem(id: itemId)
         : await itemSQLiteDao.getItem(id: itemId);
 
-    if (item == null){
+    if (item == null) {
       return null;
     }
 
@@ -135,7 +135,7 @@ class ItemController extends ChangeNotifier {
 
   /// Converte uma imagem em URL para Base64.
   imageUrlTobase64(String url) async {
-    http.Response response = await http.get(url);
+    final response = await http.get(url);
     return base64Encode(response.bodyBytes);
   }
 }

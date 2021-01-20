@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'file:///C:/Users/Jack/AndroidStudioProjects/salgadar_app/lib/app/shared/utils/connectivity_utils.dart';
+import 'package:salgadar_app/app/shared/utils/connectivity_utils.dart';
 import 'package:salgadar_app/app/controllers/user_controller.dart';
 import 'package:salgadar_app/app/models/user.dart';
 import 'package:salgadar_app/app/shared/utils/alert_dialog_utils.dart';
@@ -84,7 +84,7 @@ class SignUpPageController implements Disposable {
       }
 
       signUpIsValidating = AutovalidateMode.always;
-      bool contains = await userController.containsUser(
+      final contains = await userController.containsUser(
           username: usernameController.text, userEditing: userEditing);
       if (contains) {
         showAlertDialog(

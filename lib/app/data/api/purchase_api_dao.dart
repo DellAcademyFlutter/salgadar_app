@@ -88,8 +88,8 @@ class PurchaseAPIDao {
 
   /// Busca um [Purchase].
   Future<List<Purchase>> getUserPurchases({int userId, bool getDeleted}) async {
-    final url = "$URL_PURCHASE?$PURCHASE_USERID=$userId" +
-        (getDeleted ? '' : "&$PURCHASE_ISDELETED=0");
+    final url =
+        "${"$URL_PURCHASE?$PURCHASE_USERID=$userId"}${getDeleted ? '' : "&$PURCHASE_ISDELETED=0"}";
     final response = await http.get(url);
 
     // Caso sucesso

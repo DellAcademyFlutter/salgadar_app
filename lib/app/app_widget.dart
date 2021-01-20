@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:salgadar_app/app/modules/home/home_module.dart';
-import 'package:salgadar_app/app/modules/home/home_page.dart';
-import 'package:salgadar_app/app/modules/settings/settings_module.dart';
 import 'package:salgadar_app/app/modules/splash_screen/splash_screen_module.dart';
 
 import 'controllers/user_settings_controller.dart';

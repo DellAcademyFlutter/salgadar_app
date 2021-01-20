@@ -52,7 +52,8 @@ class PurchaseController extends ChangeNotifier {
   }
 
   /// Retorna uma lista de [Purchase]s de [User].
-  Future<List<Purchase>> getUserPurchases({int userId, BuildContext context}) async {
+  Future<List<Purchase>> getUserPurchases(
+      {int userId, BuildContext context}) async {
     try {
       final hasInternet = await ConnectivityUtils.hasInternetConnectivity();
 
@@ -68,7 +69,7 @@ class PurchaseController extends ChangeNotifier {
 
   /// Retorna a data de hoje no formato dd-mm-yyyy
   getCurrentDate() {
-    final now = new DateTime.now();
+    final now = DateTime.now();
     return "${now.day}/${now.month}/${now.year}";
   }
 }

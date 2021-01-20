@@ -13,7 +13,7 @@ import 'package:salgadar_app/app/app_module.dart';
 import 'package:salgadar_app/app/controllers/cart_controller.dart';
 import 'package:salgadar_app/app/models/item.dart';
 
-void main() async {
+main() async {
   await Stetho.initialize();
   initModule(AppModule());
 

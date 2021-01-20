@@ -4,7 +4,7 @@ import 'package:timezone/timezone.dart' as tz;
 class TimeZoneHelper {
   static Future<void> configureLocalTimeZone() async {
     tz.initializeTimeZones();
-    String timeZoneName =
+    var timeZoneName =
         DateTime.now().timeZoneName; // Captura o timeZone do dispositivo
 
     // Lista de Timezones disponivel em: https://help.syncfusion.com/flutter/calendar/timezone

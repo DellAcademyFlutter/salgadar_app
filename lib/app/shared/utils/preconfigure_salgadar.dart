@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:salgadar_app/app/controllers/item_controller.dart';
 import 'package:salgadar_app/app/data/api/cart_api_dao.dart';
 import 'package:salgadar_app/app/data/api/item_api_dao.dart';
 import 'package:salgadar_app/app/data/api/purchase_api_dao.dart';
@@ -11,10 +10,8 @@ import 'package:salgadar_app/app/data/local/item_SQLite_dao.dart';
 import 'package:salgadar_app/app/data/local/item_cart_SQLite_dao.dart';
 import 'package:salgadar_app/app/data/local/purchase_SQLite_dao.dart';
 import 'package:salgadar_app/app/data/local/user_SQLite_dao.dart';
-import 'package:salgadar_app/app/models/item.dart';
 import 'package:salgadar_app/app/repositories/local/database/dbHelper.dart';
 import 'package:salgadar_app/app/shared/utils/consts.dart';
-import 'package:salgadar_app/app/shared/utils/url_images.dart';
 import 'package:http/http.dart' as http;
 
 class PreconfigureSalgadar {
@@ -68,7 +65,7 @@ class PreconfigureSalgadar {
     final carts = await cartAPIDao.getCarts();
     for (var i = 0; i < carts.length; i++) {
       // Insere Cart
-      Map<String, dynamic> cartMap = carts[i].toJson();
+      final cartMap = carts[i].toJson();
       cartMap.remove(CART_ITEMS);
       await cartSQLiteDao.insertCart(cartMap: cartMap);
 
@@ -90,6 +87,6 @@ class PreconfigureSalgadar {
 }
 
 imageUrlTobase64(String url) async {
-  http.Response response = await http.get(url);
+  final response = await http.get(url);
   return base64Encode(response.bodyBytes);
 }

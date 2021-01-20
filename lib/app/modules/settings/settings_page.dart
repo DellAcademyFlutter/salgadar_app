@@ -24,8 +24,8 @@ class _SettingsPageState
             builder: (context, snapshot) {
               return SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Text('Configurações' +
-                    '${controller.pageViewController.page == controller.pageViewController.initialPage ? ' de sistema' : ' de usuário'}'),
+                child: Text(
+                    'Configurações ${controller.pageViewController.page == controller.pageViewController.initialPage ? ' de sistema' : ' de usuário'}'),
               );
             }),
         centerTitle: true,

@@ -70,7 +70,7 @@ class UserSQLiteDao {
       where: "$USER_USERNAME = ?",
       whereArgs: [username],
     );
-    if (maps.length > 0) {
+    if (maps.isNotEmpty) {
       return User.fromJson(json: maps.first);
     }
     return null;

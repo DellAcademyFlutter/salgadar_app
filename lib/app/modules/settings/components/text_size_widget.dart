@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:salgadar_app/app/controllers/user_settings_controller.dart';
-import 'file:///C:/Users/Jack/AndroidStudioProjects/salgadar_app/lib/app/shared/utils/math_utils.dart';
+import 'package:salgadar_app/app/shared/utils/math_utils.dart';
 
 /// Esta classe retorna um widget referente a configuracao do tamanho da fonte.
 class TextSizeWidget extends StatelessWidget {

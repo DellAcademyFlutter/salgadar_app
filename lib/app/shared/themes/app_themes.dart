@@ -24,7 +24,7 @@ class ThemeCollection {
 
   static defaultTheme() {
     final settings = Modular.get<UserSettingsController>();
-    const primaryColor = Colors.blue;
+    const primaryColor = Colors.indigo;
 
     return ThemeData(
       backgroundColor: primaryColor,
