@@ -10,7 +10,7 @@ Aplicativo móvel de loja virtual de salgados e fast foods.
 Observações importantes para execução do aplicativo no emulador Android:
 1. Instalar o [Node.js](https://nodejs.org/en/download/).
 2. Abrir o terminal no diretório do arquivo servidor [salgadar.json](json_server/salgadar.json) e executar o seguinte comando de sistema:
-  1. json-server --watch salgadar.json
+- json-server --watch salgadar.json
 
 ## Features
 O aplicativo possui as seguintes features:
@@ -25,9 +25,9 @@ O aplicativo possui as seguintes features:
 8. Possibilidade de adição/remoção de quantidade de itens no carrinho.
 9. Feedbacks de confirmação de finalização de compra e remoção de compra.
 10. Verificação de conexão com internet nas operações de:
-  10.1. Cadastro e alteração de usuário.
-  10.2. Finalização de uma compra.
-  10.3. Remoção de uma compra.
+  - Cadastro e alteração de usuário.
+  - Finalização de uma compra.
+  - Remoção de uma compra.
 11. Animações com opacidade em cadastro/alteração de usuário, finalização de compra.
 12. Notificação Local após a finalização da compra.
 13. Configurações de Tema (Claro, escuro, alto contraste e definido pelo sistema) e tamanho da cor.
@@ -55,7 +55,7 @@ Notificação Local          |  Tela de configurações
 
 Conexão com internet       |  Feedback de confirmação
 :-------------------------:|:-------------------------:
-<img src="images/Salgadar_ConnectionChecker.png" width="300">|<img src="images/Salgadar_Configuration.png" width="300">|
+<img src="images/Salgadar_ConnectionChecker.png" width="300">|<img src="images/Salgadar_Feedback.png" width="300">|
 
 Tema escuro                |  Alto Contraste
 :-------------------------:|:-------------------------:
