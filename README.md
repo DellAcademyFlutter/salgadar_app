@@ -9,7 +9,7 @@ Aplicativo móvel de loja virtual de salgados e fast foods.
 ## Instruções para execução no emulador
 Observações importantes para execução do aplicativo no emulador Android:
 1. Instalar o [Node.js](https://nodejs.org/en/download/).
-2. Abrir o terminal no diretório do arquivo servidor [salgadar.json](salgadar_app/json_server) e executar o seguinte comando de sistema:
+2. Abrir o terminal no diretório do arquivo servidor [salgadar.json](json_server/salgadar.json) e executar o seguinte comando de sistema:
   1. json-server --watch salgadar.json
 
 ## Features
@@ -38,16 +38,27 @@ Observação: CRUD é um acrônimo para as quatro operações básicas para arma
 
 ## Screenshots
 Splash Screen              |  Tela inicial
+:-------------------------:|:-------------------------:
 <img src="images/Salgadar_SplashScreen.png" width="300">|<img src="images/Salgadar_HomePage.png" width="300">|
+
 Tela de Login              |  Validações
+:-------------------------:|:-------------------------:
 <img src="images/Salgadar_LoginPage.png" width="300">|<img src="images/Salgadar_Validators.png" width="300">|
+
 Tela do carrinho           |  Tela de minhas compras
+:-------------------------:|:-------------------------:
 <img src="images/Salgadar_CartPage.png" width="300">|<img src="images/Salgadar_MyPurchases.png" width="300">|
+
 Notificação Local          |  Tela de configurações
+:-------------------------:|:-------------------------:
 <img src="images/Salgadar_LocalNotification.png" width="300">|<img src="images/Salgadar_Configuration.png" width="300">|
+
 Conexão com internet       |  Feedback de confirmação
+:-------------------------:|:-------------------------:
 <img src="images/Salgadar_ConnectionChecker.png" width="300">|<img src="images/Salgadar_Configuration.png" width="300">|
+
 Tema escuro                |  Alto Contraste
+:-------------------------:|:-------------------------:
 <img src="images/Salgadar_DarkTheme.png" width="300">|<img src="images/Salgadar_HighContrast.png" width="300">|
 
 ## Modelo relacional
