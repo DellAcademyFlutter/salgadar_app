@@ -38,22 +38,16 @@ Observação: CRUD é um acrônimo para as quatro operações básicas para arma
 
 ## Screenshots
 Splash Screen              |  Tela inicial
-:-------------------------:|:-------------------------:
 <img src="images/Salgadar_SplashScreen.png" width="300">|<img src="images/Salgadar_HomePage.png" width="300">|
 Tela de Login              |  Validações
-:-------------------------:|:-------------------------:
 <img src="images/Salgadar_LoginPage.png" width="300">|<img src="images/Salgadar_Validators.png" width="300">|
 Tela do carrinho           |  Tela de minhas compras
-:-------------------------:|:-------------------------:
 <img src="images/Salgadar_CartPage.png" width="300">|<img src="images/Salgadar_MyPurchases.png" width="300">|
 Notificação Local          |  Tela de configurações
-:-------------------------:|:-------------------------:
 <img src="images/Salgadar_LocalNotification.png" width="300">|<img src="images/Salgadar_Configuration.png" width="300">|
 Conexão com internet       |  Feedback de confirmação
-:-------------------------:|:-------------------------:
-<img src="images/.png" width="300">|<img src="images/.png" width="300">|
+<img src="images/Salgadar_ConnectionChecker.png" width="300">|<img src="images/Salgadar_Configuration.png" width="300">|
 Tema escuro                |  Alto Contraste
-:-------------------------:|:-------------------------:
 <img src="images/Salgadar_DarkTheme.png" width="300">|<img src="images/Salgadar_HighContrast.png" width="300">|
 
 ## Modelo relacional
@@ -61,7 +55,7 @@ O armazenamento das estruturas de dados utilizadas no aplicativo seguiu o seguin
 <img src="images/salgadar_modeloRelacional.png">
 
 ## Imagens
-As imagems dos items foram retiradas do site [Unplash](https://unsplash.com/).
+As imagems dos itens foram retiradas do site [Unplash](https://unsplash.com/).
 
 ## Equipe desenvolvedora
 - Elias Cícero Moreira Guedes (Mentorado).
